@@ -218,7 +218,7 @@ export default function WhatWeDoSection() {
             ref={imageRef}
             className="relative"
           >
-            <div className="relative overflow-hidden r">
+            <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               {/* Slash Background */}
               <div className="absolute inset-0 z-0">
                 <img 

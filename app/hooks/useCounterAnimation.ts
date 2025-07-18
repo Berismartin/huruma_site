@@ -17,7 +17,7 @@ export function useCounterAnimation({
 }: UseCounterAnimationProps) {
   const [count, setCount] = useState(start);
   const [isAnimating, setIsAnimating] = useState(false);
-  const animationRef = useRef<number>();
+  const animationRef = useRef<number | undefined>(undefined);
   const observerRef = useRef<IntersectionObserver | null>(null);
   const elementRef = useRef<HTMLDivElement>(null);
 
