@@ -64,7 +64,6 @@ const Button: React.FC<ButtonProps> = ({
         className={classes}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        disabled={disabled}
       >
         {content}
       </motion.a>
