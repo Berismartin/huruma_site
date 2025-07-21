@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
         onClick={onClick}
         whileHover={hover ? { scale: 1.02, y: -5 } : {}}
         whileTap={{ scale: 0.98 }}
-        cursor="pointer"
+        style={{ cursor: 'pointer' }}
       >
         {children}
       </motion.div>
