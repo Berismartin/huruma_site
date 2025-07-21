@@ -56,6 +56,129 @@ o   Team (description and socials)
 Meet the Hands Behind the Hope
 Behind every life transformed, every community strengthened and every brighter future at HGSI, you'll find a team driven by deep empathy and unwavering dedication. We are a diverse group of passionate individuals, united by the belief that compassion can change the world. Our hands-on commitment, local understanding, and shared vision are the driving force behind the Huruma Global Support Initiative and bring hope as we put EMPATHY IN ACTION.
 Discover the faces and stories of the HGSI team who make it all possible
+Meet the Hands Behind the Hope
+Behind every life transformed, every community strengthened and every brighter future at HGSI, you'll find a team driven by deep empathy and unwavering dedication. We are a diverse group of passionate individuals, united by the belief that compassion can change the world. Our hands-on commitment, local understanding, and shared vision are the driving force behind the Huruma Global Support Initiative and bring hope as we put EMPATHY IN ACTION.
+Discover the faces and stories of the HGSI team who make it all possible.
+Meet the team
+
+Nabukalu Diana: The Founding Catalyst
+Chairperson, Co-Founder & CEO
+Nabukalu Diana is the Founding Catalyst behind Huruma Global Support Initiative (HGSI). Her journey began with a quiet ache—witnessing children and families brimming with unfulfilled potential, weighed down not by a lack of ability but by a lack of opportunity. What began as empathy grew into a powerful conviction: that compassion must be translated into action—strategic, persistent, and deeply rooted in dignity.
+Nabukalu believes that real change goes beyond acts of charity; it demands bold, sustainable solutions that restore hope and unlock the human spirit. From that realization, the seed of HGSI was planted in her heart and has since grown into a vibrant movement—one that now supports communities through education, empowerment, and practical support.
+Today, Nabukalu continues to lead HGSI with passion and clarity. She is the relentless force behind our vision, daring to imagine—and build—a world where every child and every family has a real chance to thrive.
+“Empathy must evolve into strategy. Dignity is not given it is restored. And that is the work of HGSI.”
+ 
+ 
+ 
+
+Nabatanzi Edna: The Trust Builder
+Head Finance and Administration, Vice  Chair person & Co-founder
+“Raised on sacrifice and resilience, I know what it means to go without — and act like all is well. My mother’s strength put me through school when we had nothing. Through the Huruma Global Support Initiative, I now work to ensure no Ugandan has to act, sacrifice alone, or lose hope. One life at a time, we rise together.”
+Edna Nabatanzi is the co-founder of Huruma Global Support Initiative. Edna’s motivation stemmed from a deep-seated belief in transparency and accountability, especially in the development sector. Having seen organisations struggle with trust, Edna was determined that HGSI would be different. Every dollar must tell a story of impact, clearly and honestly, Edna declared. With a strong background in Banking and Operations, Edna ensures that HGSI's resources are managed with utmost integrity, that every investment is tracked, and every success is measurable. Edna is our guardian of trust, ensuring that funders can see the direct, tangible results of their generosity.
+ 
+
+Mbaguta Brian – The Advocate for the Forgotten
+Head of Programs, Co-Founder & Secretary to the Board
+“I joined HGSI because I could not ignore the silent cries of children and women who simply need someone to believe in them. Huruma is more than a team—it’s a family, with a mission to restore dignity, create opportunity, and bring light where there’s been darkness for too long. Every step we take brings hope to someone who thought they were forgotten. Being part of this journey is not just my calling—it’s my purpose.”
+As Secretary to the Board, Head of Programs, and a Founding Member of Huruma Global Support Initiative, Mbaguta Brian blends strategic direction with heartfelt compassion. From ensuring good governance at the board level to translating vision into practical, life-changing programs, Brian is a central pillar of HGSI’s leadership.
+With a fierce commitment to women and children, Brian ensures that HGSI’s programs are responsive, inclusive, and community-rooted. They design and oversee initiatives that go beyond aid—programs that heal, empower, and sustain. Whether it’s a campaign for school materials or a long-term livelihood project, Brian brings clarity, accountability, and humanity to every layer of implementation.
+“Behind every document I file is a story we’re helping to rewrite—a life we’re helping to restore.”
+ 
+
+Lukermoi-Agaba Ryan: The Youth Empowerment Voice/Legacy bearer
+Head Youth and Volunteer Engagement, Co-Founder & Board member
+“Raised by a mother who led with compassion, I saw firsthand how care can be a form of power. She didn’t just employ people—she nurtured them, educated them, and treated each like family. That legacy shaped me. Through HGSI, I carry her example forward, working to ensure every Ugandan feels seen, supported, and valued. We don't just change lives—we carry each other forward, a step at a time.”
+Lukermoi is a co-founder of Huruma Global Support Initiative and serves on the Board while also leading as the Youth and Volunteer Engagement Coordinator. From day one, Lukermoi has infused HGSI with a deep sense of energy, warmth, and purpose. Believing passionately in the potential of young people, Lukermoi mobilizes youth volunteers, mentors student-led initiatives, and designs empowerment programs that build confidence, skill, and leadership from the ground up.
+Lukermoi doesn’t just recruit volunteers—Lukermoi inspires them. Every activity led by Lukermoi is an invitation to belong, to lead, and to be the change. Whether in a classroom or a village hall, Lukermoi ensures that no young person is left behind or underestimated.
+“Young people are not just beneficiaries—they are leaders in motion.”
+ 
+ 
+
+ 
+Richard Jones Odong – The Narrative Weaver
+Head of Communications and Storytelling, Co-Founder & Board Member
+
+ Odong is the storyteller behind the movement—the keeper of Huruma Global Support Initiative’s voice and soul. As Director of Communications and Storytelling and a Co-Founder & Board Member, Odong ensures that the heart of the work is not only felt—but heard, seen, and remembered.
+With a gift for capturing both the pain and the promise in every community we serve, Odong brings to life the silent struggles, quiet victories, and everyday miracles that define HGSI’s impact. Each photo, each caption, each campaign tells a story that refuses to let dignity be forgotten.
+Odong believes that storytelling is not just about raising awareness—it’s about restoring humanity. By shaping how the world sees HGSI, Odong invites others into a movement grounded in justice, compassion, and transformation.
+“Stories don’t just move people—they move people to act. That’s how change begins.”
+
+ 
+Mbaguta Henry: The Digital Strategist
+Head of Information and Communication Technology
+Mbaguta leads HGSI’s ICT operations with vision, precision, and purpose. With a background in Information Technology, management, and corporate relations, Mbaguta is the driving force behind building the digital backbone that powers the HGSI’s mission—from secure data systems and field connectivity to partner communications and reporting platforms.
+Under Mbaguta’s leadership, technology is not just a support tool—it’s a bridge. A bridge that links donors to impact in real time, staff to real solutions, and communities to the digital age. Mbaguta ensures that every system built serves people first—making HGSI’s work faster, smarter, and more transparent.
+A firm believer in the power of shared responsibility, Mbaguta is passionate about unlocking both local and global digital support to scale the work of HGSI. Whether it’s equipping rural teams with mobile data tools or developing dashboards that tell stories through numbers, Mbaguta ensures that technology carries the heart of the mission forward.
+“When partners believe in the cause, transformation becomes unstoppable.”
+ 
+ 
+ 
+ 
+Luyima Fredrick – The Connector
+Head of Partnerships, Resource Mobilisation & External Relations
+Luyima is the strategic force behind Huruma Global Support Initiative’s partnerships, fundraising, and external relations. With a strong background in management and corporate engagement, Luyima leads efforts to mobilize the resources that turn vision into reality—one partnership, one investment, one purpose-driven collaboration at a time.
+Luyima believes that transformation doesn’t happen in isolation. That’s why he brings the world to HGSI—and HGSI to the world. From CSR partners to grassroots allies, Luyima crafts meaningful relationships that sustain and scale our work. He doesn’t just ask for support—he inspires belief, connecting people to purpose and showing them the tangible power of their contribution.
+At his core, Luyima is a connector. He sees possibilities where others see obstacles and understands that every successful campaign begins with trust. Whether forging alliances with local businesses or unlocking international networks, Luyima ensures that HGSI’s mission is shared, supported, and sustained.
+“When people believe in the vision, they invest—not just with money, but with purpose and then transformation becomes unstoppable.”
+ 
+ 
+ 
+
+Eric Okiria: The Impact Architect
+Head, Impact & Learning
+I joined the Huruma Global Support Initiative team because I believe every child deserves to feel known, valued, and equipped for the future. Volunteering here has shown me that change happens not just through grand gestures, but through daily acts of care and belief in each child’s potential. I’m proud to stand with HGSI, helping build a community where each child can grow up loved, educated, and ready to give back.
+As Head Impact and Learning, Okiria is both the analytical mind behind our systems of measurement and the empathetic heart that ensures data never loses its human face. In every number, Okiria sees a name. In every graph, a story. And behind every success, Okiria ensures we understand not only what worked—but why.
+Okiria builds and leads the systems that track our effectiveness, ask the hard questions, and hold us accountable to the very people we serve. By collecting evidence, capturing insights, and facilitating learning, Okiria helps HGSI grow with purpose and stay true to its mission.
+With every survey, every indicator, and every outcome, Okiria reminds us that measuring change is not about ticking boxes—it’s about honouring lives.
+“We don’t just measure outcomes. We measure what matters to the people we serve.”
+ 
+
+ 
+Ssebuguzi Alex
+Program Officer, Sustainable Livelihoods
+“Huruma inspired me by helping struggling entrepreneurs and supporting school children with fees and materials across different districts. That impact touched me deeply—and that’s why I chose to join and work with HGSI.”
+Ssebuguzi is a vital member of the Huruma team. His personal experience as a farmer and small business owner, combined with his deep commitment to community empowerment, perfectly embody Huruma Global Support Initiative’s principle of 'Empathy in Action.' Ssebuguzi is driven by a passion to equip local entrepreneurs with the skills and resources they need to build economic independence. His real-world knowledge, deep empathy, and passion for empowerment make him an essential force in building lasting impact and opportunities.
+ 
+ 
+
+Bwire Simon Peter
+Procurement Officer
+ 
+"I was drawn to HGSI's 'Empathy in Action' because it perfectly aligns with my values of compassion and community service. I'm excited to use my skills to make a tangible impact and be part of a team truly dedicated to meaningful support for others."
+Bwire is a vital member of the HGSI team, serving as our Procurement Officer. His professional values of compassion, kindness, and community service resonate deeply with Huruma Global Support Initiative's 'Empathy in Action' principle. Bwire is driven by a passion to ensure that every resource acquired directly amplifies HGSI's mission. Bwire’s expertise in facilitating efficient and ethical procurement processes is instrumental in maximizing HGSI’s impact, directly contributing to meaningful support and positive change for individuals and communities in need.
+ 
+ 
+
+ 
+Voices of Huruma
+Because this movement is built by many hands, hearts, and voices.
+Huruma Global Support Initiative is more than its core team—it's a living, breathing community of people who believe in compassion, dignity, and action. From elders and parents to volunteers and donors, the voices below remind us why we do what we do—and who we do it for.
+
+Lule Muganwa Edward – Respected Elder and Mentor
+“It may be a small contribution, but to me, it is noteworthy. I thank the HGSI directors for giving me the chance to serve, even in this way.”
+Introduced by his daughter, Lule supports HGSI as a donor and advisor. At 72, he’s chosen to turn his blessings into fuel for others, especially children facing barriers to education.
+ 
+
+🛵 Charles – The Boda Boda Rider with a Mission
+“These books, these supplies—they’re heavy. But I carry them like they’re gold. Because they are.”
+One of the very first people to donate to HGSI, Charles now volunteers his boda boda to help deliver supplies on behalf of HGSI. His reliability keeps the mission moving—literally.
+ 
+
+💻 Ronnie & Friends – The Laptop Lifesavers
+Ronnie encountered Huruma Global Support Initiative when he was called in to help set up the organisation’s office laptops. What began as a simple job quickly turned into a moment of conviction. Seeing firsthand the purpose behind the work he was inspired, Ronnie made a quiet vow: “I may not be rich, but I can give what I have.” He began making regular small donations and
+ now encourages his friends to do the same—proving that even micro-giving can make a meaningful difference. To Ronnie, giving is his quiet way of building a better future for Uganda’s children.
+ 
+ 
+📊 Tisha – The Silent Analyst
+“You won’t see me at the front. But in the numbers, I make sure every child counts.”
+HGSI’s background Hero, Tisha quietly lends her analytical skills to track HGSI’s reach and refine programs—ensuring every decision is backed by evidence.
+ 
+
+📱 Maggie – The Growing TikToker with a Big Heart
+“I use my platform to show that giving is cool, and kindness is powerful.”
+Maggie uses her growing TikTok following to raise awareness and funds for HGSI campaigns. She makes giving relatable—and viral.
+ 
+ 
 
 
 o   News/Blog Posts (if applicable)
@@ -89,109 +212,3 @@ Reflections
 
   
 
- 
- 
- 
-Beyond the Books: A Glimpse into Hope and Heartbreak at 
-Murambo Catholic Nursery and Primary School 
-A Story of Urgent Need and Unyielding Spirit 
- 
-The air buzzed with anticipation. Our team at Huruma Global Support Initiative (HGSI) 
-was on its way to Murambo Catholic Nursery and Primary School in Rukungiri District, 
-carrying boxes filled with hope. Our "A Bright Future Begins with a Book" campaign 
-was a pilot, a simple yet powerful idea: provide essential PLE question paper banks, 
-pens, pencils, erasers, mathematical sets, and rulers to Primary Leaving Examination 
-(PLE) candidates. We imagined the smiles, the renewed determination. This was our 
-first step, a small but vital lifeline for children in a community where education often 
-remains an unreachable dream. 
-As we arrived, the warmth of the welcome was immediate. A well-arranged tent and a 
-special sitting area; The Headmistress, teachers (11 in total), and pupils (175 in total) 
- 
- 
-greeted us with genuine smiles, their gratitude palpable, the school choir sang, the 
-nursery children rhyming, the LC1 chairperson, School Management Committee, the 
-PTA and the parents to the P7 candidates all in anticipation of the hope we carried. We 
-gathered the 15 PLE candidates – our initial target of 21 had sadly dwindled, with 6 
-bright students already forced to drop out due to lack of school fees, registration costs, 
-and basic scholastic materials. It was a sobering reminder of the very real barriers we 
-sought to address. Yet, as we handed over the package, we carried containing the 
-neatly packed pencil cases, mathematical sets, foot rulers, pens, pencils and the 
-precious past papers, the light in those children's eyes and the relief in the struggling 
-parents sigh was undeniable. A grateful headmistress, a relieved class teacher... A small 
-victory, a moment of pure joy. 
-But then, the tour began. And our smiles turned to shock, then to a profound, aching 
-sadness that settled deep in our hearts. 
-We stepped into the P1 classroom, meant for 18 eager young minds. What we found 
-was unimaginable. This single, incomplete room, with its bare dirt floor and just four 
-rough benches made from logs – benches that would surely hurt a child’s back – 
-served not only as a learning space but also as the staff room for 11 teachers. Tucked 
-behind the door, a makeshift shelf overflowed with papers, topped incongruously with 
-two deflated soccer balls. This was the Headmistress's "office," a low-level table and a 
-hard wooden chair. And in another corner, sacks of maize flour, beans, and three 
-cartons of soda sat, turning the classroom into the school's food storage. The thought 
-of children trying to learn, teachers trying to prepare lessons, and a Headmistress 
-trying to manage a school in such a cramped, multi-purpose, and undignified space 
-was heartbreaking. 
-The horror continued. The P3 classroom, we discovered, doubled as the school kitchen. 
-A huge pile of firewood dominated one corner. A few plastic plates and cups, clearly 
-not enough for 175 children, lay on a tarpaulin on the dirt floor. Soot marks stained the 
-walls around a makeshift cooking area, with discarded jerricans littering the side. We 
-pictured the smoke, the heat, the constant disruption to learning. In another corner, a 
-pile of children’s bags – woven baskets, really – held their few precious books, some 
-with a single container or two for their meagre meals. Above us, an incomplete ceiling 
-stared down, and wooden window frames, too few to fill all the openings, offered little 
-protection against the elements or intruders.  
-Then came the P4 classroom. Our hearts truly broke here. No windows, no doors, a dirt 
- 
- 
-floor, no ceiling. The roof was only partially complete, offering a mere suggestion of 
-shelter from sun or rain. Broken blackboards stood as silent witnesses to interrupted 
-lessons. Five dilapidated, makeshift seats attached to desks, again made from raw logs, 
-looked more like crude furniture from a local drinking spot than a place for children to 
-learn. These were meant for 28 students but were clearly insufficient. How could a child 
-study, how could they even write an exam, at such a desk? The indignity was crushing. 
-The tour revealed deeper systemic failures. There were no latrine facilities at the 
-school. We wondered where the pupils, especially the young girls who need this dignity 
-most during their monthly periods and who cannot even afford sanitary towels, went 
-to ease themselves. The teachers, we learned, walked five hundred meters uphill to a 
-dilapidated latrine at a nearby Catholic church. There was no running water within the 
-school grounds; water was fetched from a borehole over 1 kilometre down the valley. 
-We saw pupils walking barefoot, their uniforms so old, worn, and torn that it was painful 
-to witness. 
-The lack of basic resources extended to learning aids. No electricity, no printers, no 
-electronic devices. Teachers had to rely on well-wishers to transport and print end-of
-term exams from Rukungiri town. The school had no atlas, leaving us to imagine how 
-geography was taught; perhaps from memory, prone to error. Crucially, there was no 
-dictionary in the entire school. Our hearts sank when we saw the word "Magnet" 
-misspelled as "mangnent" on a science teacher's board in the P7 classroom – a small 
-detail that spoke volumes about the daily struggle to access basic reference tools. 
-The teachers, the very backbone of this struggling institution? They had been unpaid 
-for over 5 months. Yet, day after day, they returned, driven by an unwavering 
-commitment to these children. A quick inquiry revealed that the meagre fees paid by 
-pupils (UGX 28,000 per term), which many families couldn't even afford, were 
-insufficient to sustain the school or pay salaries. They too relied on well-wishers. Even 
-the 50,000 that was left behind by one of our colleagues wasn’t enough to cover the 
-salary dues of the school cook who continuously reminded us that her needs are also 
-overwhelming and should not be forgotten. 
-Despite this overwhelming despair, a flicker of hope remained. The dedication of the 
-PTA, the School Management Committee, and the parents, enduring immense 
-hardships, was inspiring. The teachers' resilience, showing up daily despite being 
-unpaid, was a testament to their profound commitment. 
-The "A Bright Future Begins with a Book" pilot, while a success for the 15 children who 
-received materials, was a stark awakening. It showed us that while books are a start, 
-the very foundation of education is crumbling for countless children in places like 
-Murambo Catholic Nursery and Primary School. If a simple pencil and a past paper 
-could bring such joy and a glimmer of hope, imagine the transformative power of a safe 
-classroom, clean water, dignified sanitation, and supported teachers. 
-This is not an isolated incident. Across Uganda, several schools face similar, unseen 
-struggles. We must not let this talent go to waste. The success of our pilot, coupled 
-with the profound needs uncovered, compels us to act on a larger scale. We are driven 
-to expand our holistic support to three other equally deserving, marginalized 
-schools across Uganda. We believe that by addressing these fundamental barriers, 
-we can ensure that every child, regardless of their background, has the chance to truly 
-build a bright future. We invite you to join us in this urgent and vital mission. 
-Huruma Global Support Initiative 
-Address: P.O. Box 180486, Kampala - Uganda  
-Phone: +256748020214 
-Donate: Airtel pay code 4392361  
-DFCU Bank: 01490016746558 

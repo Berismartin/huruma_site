@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function Header() {
+export default function AboutHeader() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -20,7 +20,6 @@ export default function Header() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Team', href: '/team' },
     { name: 'Our Work', href: '/work' },
     { name: 'Impact', href: '/impact' },
     { name: 'Blog', href: '/blog' },
@@ -31,7 +30,7 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-        : 'bg-transparent'
+        : 'bg-white/95 backdrop-blur-md shadow-sm'
     }`}>
       {/* Top Bar - Only show when scrolled */}
       {isScrolled && (
@@ -94,10 +93,6 @@ export default function Header() {
               height={150}
               className="w-30 h-30"
             />
-            {/* <div className="flex flex-col">
-              <span className="text-xl lg:text-2xl font-bold text-gray-900">Huruma</span>
-              <span className="text-xs lg:text-sm text-gray-600 -mt-1">Global Support Initiative</span>
-            </div> */}
           </Link>
 
           {/* Desktop Navigation */}
@@ -107,9 +102,9 @@ export default function Header() {
                 key={item.name}
                 href={item.href}
                 className={`font-medium transition-colors duration-200 ${
-                  isScrolled 
-                    ? 'text-gray-700 hover:text-[#5bc54b]' 
-                    : 'text-white hover:text-[#4f9aa9]'
+                  item.href === '/about' 
+                    ? 'text-[#5bc54b] font-semibold' 
+                    : 'text-gray-700 hover:text-[#5bc54b]'
                 }`}
               >
                 {item.name}
@@ -119,20 +114,14 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-              isScrolled
-                ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
-                : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
-            }`}>
+            <button className="px-6 py-2 rounded-full font-medium transition-all duration-200 bg-[#5bc54b] hover:bg-[#002b4a] text-white">
               Donate Now
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 transition-colors ${
-              isScrolled ? 'text-gray-700' : 'text-white'
-            }`}
+            className="lg:hidden p-2 transition-colors text-gray-700"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -148,11 +137,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className={`lg:hidden border-t transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-white border-gray-200' 
-            : 'bg-black/80 backdrop-blur-md border-white/20'
-        }`}>
+        <div className="lg:hidden border-t bg-white border-gray-200 transition-all duration-300">
           <div className="container mx-auto px-4 py-4">
             <nav className="flex flex-col space-y-4">
               {navItems.map((item) => (
@@ -160,20 +145,16 @@ export default function Header() {
                   key={item.name}
                   href={item.href}
                   className={`font-medium transition-colors duration-200 ${
-                    isScrolled 
-                      ? 'text-gray-700 hover:text-[#5bc54b]' 
-                      : 'text-white hover:text-[#4f9aa9]'
+                    item.href === '/about' 
+                      ? 'text-[#5bc54b] font-semibold' 
+                      : 'text-gray-700 hover:text-[#5bc54b]'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <button className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 w-full mt-4 ${
-                isScrolled
-                  ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
-                  : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
-              }`}>
+              <button className="px-6 py-2 rounded-full font-medium transition-colors duration-200 w-full mt-4 bg-[#5bc54b] hover:bg-[#002b4a] text-white">
                 Donate Now
               </button>
             </nav>
