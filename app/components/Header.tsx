@@ -21,7 +21,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Team', href: '/team' },
-    { name: 'Our Work', href: '/work' },
+    { name: 'Our Work', href: '/our-work' },
     { name: 'Impact', href: '/impact' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
@@ -119,13 +119,15 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center space-x-4">
-            <button className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
-              isScrolled
-                ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
-                : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
-            }`}>
-              Donate Now
-            </button>
+            <Link href="/donate">
+              <button className={`px-6 py-2 rounded-full font-medium transition-all duration-200 ${
+                isScrolled
+                  ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
+                  : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
+              }`}>
+                Donate Now
+              </button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -169,13 +171,15 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <button className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 w-full mt-4 ${
-                isScrolled
-                  ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
-                  : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
-              }`}>
-                Donate Now
-              </button>
+              <Link href="/donate">
+                <button className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 w-full mt-4 ${
+                  isScrolled
+                    ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
+                    : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
+                }`}>
+                  Donate Now
+                </button>
+              </Link>
             </nav>
           </div>
         </div>
