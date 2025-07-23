@@ -68,6 +68,7 @@ const AboutPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
+      {/* <section className="relative h-[60vh] bg-black  overflow-hidden"> */}
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0 bg-[url('/images/IMG_0314.webp')] bg-cover bg-center opacity-30"></div>
         
@@ -273,6 +274,64 @@ const AboutPage = () => {
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-green-50 to-blue-50">
+        <div className="max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
+              Watch Our Story
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              See the impact of our work and hear from the communities we serve
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative w-full max-w-4xl mx-auto">
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                <iframe
+                  src="https://www.youtube.com/embed/oOKYI8M6OZo"
+                  title="Huruma Global Support Initiative - Our Story"
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-green-500 rounded-full opacity-20"></div>
+              <div className="absolute -bottom-4 -right-4 w-12 h-12 bg-blue-500 rounded-full opacity-20"></div>
+              <div className="absolute top-1/2 -right-8 w-6 h-6 bg-purple-500 rounded-full opacity-30 transform -translate-y-1/2"></div>
+            </div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-center mt-8"
+            >
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Discover how our journey from Murambo village has grown into a global mission to transform lives through education, empowerment, and sustainable development.
+              </p>
+            </motion.div>
           </motion.div>
         </div>
       </section>

@@ -20,7 +20,7 @@ export default function AboutHeader() {
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
-    { name: 'Our Work', href: '/work' },
+    { name: 'Our Work', href: '/our-work' },
     { name: 'Impact', href: '/impact' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },

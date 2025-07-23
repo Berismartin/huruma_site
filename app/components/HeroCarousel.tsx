@@ -208,7 +208,7 @@ export default function HeroCarousel() {
       </motion.div>
 
       {/* Organization Info Overlay - Fly in animation */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {showInfoCard && (
           <motion.div
             initial={{ x: 300, opacity: 0 }}
@@ -222,8 +222,7 @@ export default function HeroCarousel() {
             }}
             className="absolute top-20 right-4 md:right-8 bg-white/10 backdrop-blur-sm rounded-lg p-4 text-white max-w-xs border border-white/20"
           >
-            {/* Close Button */}
-            <button
+             <button
               onClick={() => setShowInfoCard(false)}
               className="absolute -top-2 -right-2 w-6 h-6 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-all duration-200 backdrop-blur-sm"
               aria-label="Close info card"
@@ -245,7 +244,7 @@ export default function HeroCarousel() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </section>
   );
 } 
