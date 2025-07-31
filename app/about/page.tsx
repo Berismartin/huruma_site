@@ -159,7 +159,7 @@ const AboutPage = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                To create a positive and lasting impact by providing men, women and children with the resources, education, and opportunities necessary to break the cycle of poverty and build brighter futures.
+                To create a positive and lasting impact by equiping men, women and children with the resources, education, and opportunities necessary to break the cycle of poverty and build brighter futures.
               </motion.p>
             </motion.div>
 

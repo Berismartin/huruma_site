@@ -281,7 +281,7 @@ const TeamPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Behind every life transformed, every community strengthened and every brighter future at HGSI, you'll find a team driven by deep empathy and unwavering dedication.
+              At HGSI, our dedicated team turns empathy into action and hope into reality.
             </motion.p>
           </motion.div>
         </div>
@@ -335,7 +335,7 @@ const TeamPage = () => {
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className="relative h-64">
+                <div className="relative h-[28rem]">
                   <Image
                     src={member.image}
                     alt={member.name}
@@ -347,16 +347,6 @@ const TeamPage = () => {
                     <h3 className="text-xl font-bold mb-1">{member.name}</h3>
                     <p className="text-green-300 font-semibold">{member.role}</p>
                   </div>
-                </div>
-                <div className="p-6">
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio.substring(0, 150)}...</p>
-                  <a 
-                    href={`mailto:${member.socials.email}`} 
-                    className="text-green-600 hover:text-green-700 font-semibold text-sm flex items-center"
-                  >
-                    <Mail className="w-4 h-4 mr-2" />
-                    Contact
-                  </a>
                 </div>
               </motion.div>
             ))}
@@ -482,12 +472,12 @@ const TeamPage = () => {
                   transition: { duration: 0.3 }
                 }}
               >
-                <div className="relative h-80">
+                <div className="relative h-[28rem]">
                   <Image
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">

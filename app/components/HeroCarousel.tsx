@@ -45,7 +45,7 @@ const carouselData: CarouselSlide[] = [
   {
     id: 4,
     image: '/images/IMG_0319.webp',
-    title: 'Compassion in Action',
+    title: 'Empathy in Action',
     subtitle: 'Putting Empathy into Practice',
     description: 'Driven by deep empathy and unwavering dedication, we transform lives in vulnerable communities across Uganda.',
     ctaText: 'Join Our Mission',
