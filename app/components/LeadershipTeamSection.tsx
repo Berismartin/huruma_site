@@ -64,7 +64,8 @@ const LeadershipTeamSection: React.FC<LeadershipTeamSectionProps> = ({
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover transition-transform duration-700 hover:scale-110"
+
+                    className="object-cover  transition-transform duration-700 hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-8 text-white">

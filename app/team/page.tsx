@@ -158,6 +158,17 @@ const TeamPage = () => {
       socials: {
         email: "henry@hurumaglobalsupportinitiative.org"
       }
+    },
+    {
+      name: "Eric Okiria",
+      role: "Head Impact and Learning",
+      image: "/team/eric okiria.jpg",
+      title: "The Impact Architect",
+      bio: "I joined the Huruma Global Support Initiative team because I believe every child deserves to feel known, valued, and equipped for the future. Volunteering here has shown me that change happens not just through grand gestures, but through daily acts of care and belief in each child's potential. I'm proud to stand with HGSI, helping build a community where each child can grow up loved, educated, and ready to give back.",
+      quote: "We don't just measure outcomes. We measure what matters to the people we serve.",
+      socials: {
+        email: "eric@hurumaglobalsupportinitiative.org"
+      }
     }
   ];
 
@@ -173,17 +184,7 @@ const TeamPage = () => {
         email: "fredrick@hurumaglobalsupportinitiative.org"
       }
     },
-    {
-      name: "Eric Okiria",
-      role: "Head Impact and Learning",
-      image: "/team/WhatsApp Image 2025-07-20 at 17.19.56_57484ebc.jpg",
-      title: "The Impact Architect",
-      bio: "I joined the Huruma Global Support Initiative team because I believe every child deserves to feel known, valued, and equipped for the future. Volunteering here has shown me that change happens not just through grand gestures, but through daily acts of care and belief in each child's potential. I'm proud to stand with HGSI, helping build a community where each child can grow up loved, educated, and ready to give back.",
-      quote: "We don't just measure outcomes. We measure what matters to the people we serve.",
-      socials: {
-        email: "eric@hurumaglobalsupportinitiative.org"
-      }
-    },
+
     {
       name: "Ssebuguzi Alex",
       role: "Program Officer Sustainable Livelihoods",
@@ -336,7 +337,7 @@ const TeamPage = () => {
                     src={member.image}
                     alt={member.name}
                     fill
-                    className="object-cover"
+                    className="object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
