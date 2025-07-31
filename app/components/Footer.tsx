@@ -43,7 +43,8 @@ export default function Footer() {
               <div className="space-y-3">
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-[#4e8046]" />
-                  <span className="text-gray-300">info@hurumaglobalsupportinitiative.org</span>
+                  <span className="text-gray-300">info@hurumaglobalsupportini
+                    tiative.org</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="w-5 h-5 text-[#4e8046]" />
@@ -51,7 +52,15 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="w-5 h-5 text-[#4e8046]" />
-                  <span className="text-gray-300">P.O. Box 180486, Kampala - Uganda</span>
+                  <span className="text-gray-300">Makonzi zone Sserwadda Close Bukoto</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-[#4e8046]" />
+                  <span className="text-gray-300">Airtel pay code: 4392361</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-[#4e8046]" />
+                  <span className="text-gray-300">DFCU Bank: 01490016746558</span>
                 </div>
               </div>
             </div>

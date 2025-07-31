@@ -26,7 +26,7 @@ const services: Service[] = [
   {
     id: 2,
     title: "Quality Education",
-    description: "Enhancing access to quality education for all children through our PLE Empowerment Project, peer-funding models, and holistic support programs.",
+    description: "This pillar focuses on ensuring that every child, regardless of gender or circumstance, has access to quality education and a nurturing learning environment, laying the foundation for a brighter future through our PLE Empowerment Project dubbed 'A bright future begins with a book', the '1K Project' peer-funding model in schools, Man of Tomorrow our boy Mentorship Program, distribution and training on making of reusable Sanitary pads and strengthening learning with extracurricular and holistic support.",
     icon: (
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 3L1 9l11 6l9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82Z"/>
@@ -37,7 +37,7 @@ const services: Service[] = [
   {
     id: 3,
     title: "Community Development",
-    description: "Strengthening communities through infrastructure improvement including clean water systems, sanitation facilities, and renewable energy solutions.",
+    description: "This pillar aims to enhance the overall well-being and resilience of communities by improving access to essential services through sustainable infrastructure development like supporting construction of clean water systems, sanitation facilities and provision of renewable energy solutions.",
     icon: (
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
         <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2s-.89 2-2 2s-2-.89-2-2m4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01 1l-3.7 4.9c-.36.47-.56 1.05-.56 1.66V20h-2v-5.44c0-.61-.2-1.19-.56-1.66L8.01 9A2.5 2.5 0 0 0 6 8H5.46c-.8 0-1.54.37-2.01 1L.95 16.63A1.5 1.5 0 0 0 2.5 18H5v6h2v-6h1v6h2v-6h1v6h2v-6h1v6h2Z"/>

@@ -65,7 +65,7 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "info@hurumaglobalsupportinitiative.org",
+      value: "info@hurumaglobalsupportinit\niative.org",
       description: "We'll respond within 24 hours",
       color: "from-blue-500 to-blue-600"
     },
@@ -75,6 +75,13 @@ const ContactPage = () => {
       value: "Makonzi zone Sserwadda Close Bukoto",
       description: "Main office location",
       color: "from-purple-500 to-purple-600"
+    },
+    {
+      icon: Clock,
+      title: "Donation",
+      value: "Airtel pay code: 4392361",
+      description: "DFCU Bank: 01490016746558",
+      color: "from-green-500 to-green-600"
     },
     {
       icon: Clock,

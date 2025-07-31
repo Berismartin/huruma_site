@@ -553,7 +553,7 @@ const DonatePage = () => {
                 <div className="bg-gray-50 rounded-lg p-4">
                   <p className="text-sm text-gray-600">
                     <strong>Organization:</strong> Huruma Global Support Initiative Limited<br/>
-                    <strong>Address:</strong> P.O. Box 180486, Kampala - Uganda<br/>
+                    <strong>Address:</strong> Makonzi zone Sserwadda Close Bukoto<br/>
                     <strong>Phone:</strong> +256 748 020 214
                   </p>
                 </div>
@@ -574,7 +574,8 @@ const DonatePage = () => {
                   </div>
                   <div className="bg-blue-50 rounded-lg p-4">
                     <h4 className="font-semibold text-gray-800 mb-2">Bank Transfer</h4>
-                    <p className="text-sm text-gray-600">Contact us for bank details</p>
+                    <p className="text-lg font-bold text-blue-600">DFCU Bank: 01490016746558</p>
+                    <p className="text-sm text-gray-600">Send to: Huruma Global Support Initiative</p>
                   </div>
                 </div>
               </div>

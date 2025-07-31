@@ -8,6 +8,7 @@ import StatsSection from './components/StatsSection';
 import AboutSection from './components/AboutSection';
 import WhatWeDoSection from './components/WhatWeDoSection';
 import SuccessStorySection from './components/SuccessStorySection';
+import ImpactStoriesSection from './components/ImpactStoriesSection';
 import CoreValuesSection from './components/CoreValuesSection';
 import TextOverlaySection from './components/TextOverlaySection';
 import Footer from './components/Footer';
@@ -90,7 +91,7 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.0, duration: 1.0 }}
             >
-              {/* <CoreValuesSection /> */}
+              <ImpactStoriesSection />
             </motion.div>
 
             <motion.div
@@ -98,13 +99,21 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.4, duration: 1.0 }}
             >
-              <TextOverlaySection />
+              {/* <CoreValuesSection /> */}
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 3.8, duration: 1.0 }}
+            >
+              <TextOverlaySection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 4.2, duration: 1.0 }}
             >
               <Footer />
             </motion.div>

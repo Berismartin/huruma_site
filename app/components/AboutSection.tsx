@@ -22,22 +22,27 @@ export default function AboutSection() {
     {
       icon: "❤️",
       title: "Compassion",
-      description: "Deep empathy for those facing poverty and educational challenges drives us."
+      description: "Deep empathy for those facing poverty and educational challenges drives us. We respond with genuine care and dedicated action to foster hope and make a tangible difference."
     },
     {
       icon: "⚖️",
       title: "Integrity",
-      description: "We uphold the highest ethical standards in all we do."
+      description: "We uphold the highest ethical standards in all we do. Transparency, accountability, and honesty ensure that every contribution is utilized effectively and responsibly to achieve our mission."
     },
     {
       icon: "👑",
       title: "Dignity",
-      description: "Every individual has inherent worth and deserves respect."
+      description: "Every individual has inherent worth. Our programs empower men, women, and children to lead dignified lives, building self-reliance and enabling them to shape their own prosperous futures."
     },
     {
       icon: "🤝",
+      title: "Respect",
+      description: "We deeply respect the local knowledge, cultures, and aspirations of the communities we serve. Our initiatives are collaborative, culturally sensitive, and inclusive, valuing every individual's unique contribution."
+    },
+    {
+      icon: "🛠️",
       title: "Service",
-      description: "Our dedication is to actively serve those in need."
+      description: "Our dedication is to actively serve those in need. We provide essential resources, education, and opportunities to overcome poverty, focusing on long-term impact and a more equitable future for all."
     }
   ];
 
@@ -146,18 +151,18 @@ export default function AboutSection() {
         </div>
 
         {/* Values Section */}
-        {/* <div className="text-center mb-12">
+        <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-gray-900 mb-4">
             Our Core Values
           </h3>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             These principles guide every program, interaction, and decision we make.
           </p>
-        </div> */}
+        </div>
 
-        {/* <div 
+        <div 
           ref={valuesRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8"
         >
           {values.map((value, index) => (
             <div
@@ -174,13 +179,13 @@ export default function AboutSection() {
                 <h4 className="text-xl font-semibold text-gray-900 mb-3">
                   {value.title}
                 </h4>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm">
                   {value.description}
                 </p>
               </div>
             </div>
           ))}
-        </div> */}
+        </div>
 
         {/* Vision Statement */}
         <div className="mt-20 bg-gradient-to-r from-[#002b4a] to-[#4f9aa9] rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
