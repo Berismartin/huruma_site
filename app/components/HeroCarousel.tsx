@@ -208,7 +208,7 @@ export default function HeroCarousel() {
       </motion.div>
 
       {/* Organization Info Overlay - Bottom Left */}
-      <AnimatePresence>
+      { window.innerWidth > 768 ? <AnimatePresence>
         {showInfoCard && (
           <motion.div
             initial={{ x: -300, opacity: 0 }}
@@ -244,7 +244,7 @@ export default function HeroCarousel() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> : null}
     </section>
   );
 } 

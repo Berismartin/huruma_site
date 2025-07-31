@@ -602,7 +602,8 @@ const TeamPage = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <Mail className="w-8 h-8 text-white mx-auto mb-4" />
                 <h3 className="text-white font-semibold mb-2">Email</h3>
-                <p className="text-green-100">info@hurumaglobalsupportinitiative.org</p>
+                <p className="text-green-100">info@hurumaglobalsupportini
+                  tiative.org</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <MapPin className="w-8 h-8 text-white mx-auto mb-4" />

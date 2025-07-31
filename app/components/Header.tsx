@@ -155,35 +155,102 @@ export default function Header() {
             ? 'bg-white border-gray-200' 
             : 'bg-black/80 backdrop-blur-md border-white/20'
         }`}>
-          <div className="container mx-auto px-4 py-4">
-            <nav className="flex flex-col space-y-4">
-              {navItems.map((item) => (
+          <div className="container mx-auto px-4 py-6">
+            <nav className="flex flex-col space-y-1">
+              {navItems.map((item, index) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`font-medium transition-colors duration-200 ${
+                  className={`group flex items-center justify-between py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
                     isScrolled 
-                      ? 'text-gray-700 hover:text-[#5bc54b]' 
-                      : 'text-white hover:text-[#4f9aa9]'
+                      ? 'text-gray-700 hover:text-[#5bc54b] hover:bg-gray-50' 
+                      : 'text-white hover:text-[#4f9aa9] hover:bg-white/10'
                   }`}
                   onClick={() => setIsMobileMenuOpen(false)}
+                  style={{
+                    animationDelay: `${index * 50}ms`,
+                    animation: 'slideInFromTop 0.3s ease-out forwards'
+                  }}
                 >
-                  {item.name}
+                  <span className="flex items-center space-x-3">
+                    {item.name}
+                  </span>
+                  <svg 
+                    className={`w-4 h-4 transition-transform duration-200 group-hover:translate-x-1 ${
+                      isScrolled ? 'text-gray-400' : 'text-white/60'
+                    }`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               ))}
-              <Link href="/donate">
-                <button className={`px-6 py-2 rounded-full font-medium transition-colors duration-200 w-full mt-4 ${
+              
+              {/* Divider */}
+              <div className={`my-4 border-t ${
+                isScrolled ? 'border-gray-200' : 'border-white/20'
+              }`}></div>
+              
+              {/* Donate Button */}
+              <Link href="/donate" className="mt-2">
+                <button className={`group w-full px-6 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-[1.02] ${
                   isScrolled
-                    ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white'
-                    : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30'
+                    ? 'bg-[#5bc54b] hover:bg-[#002b4a] text-white shadow-lg hover:shadow-xl'
+                    : 'bg-white/20 hover:bg-white/30 text-white backdrop-blur-sm border border-white/30 hover:border-white/50'
                 }`}>
-                  Donate Now
+                  <span className="flex items-center justify-center space-x-2">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    <span>Donate Now</span>
+                    <svg className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </button>
               </Link>
+              
+              {/* Contact Info for Mobile */}
+              <div className={`mt-6 pt-4 border-t ${
+                isScrolled ? 'border-gray-200' : 'border-white/20'
+              }`} style={{marginBottom: '20px'}}>
+                <div className={`text-sm space-y-2 ${
+                  isScrolled ? 'text-gray-600' : 'text-white/80'
+                }`}>
+                  <div className="flex items-center space-x-2" >
+                    <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                    <span>+256 748 020 214</span>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    <span className="text-xs leading-relaxed">info@hurumaglobalsupportinitiative.org</span>
+                  </div>
+                </div>
+              </div>
             </nav>
           </div>
         </div>
       )}
+      
+      <style jsx>{`
+        @keyframes slideInFromTop {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </header>
   );
 } 
