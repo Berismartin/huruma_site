@@ -82,14 +82,14 @@ export default function AboutSection() {
           </h2>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#002b4a] mb-6">
             <TypewriterText 
-              text="We Are In A Mission To Help Helpless"
+              text="We are on a mission to uplift marginalized communities"
               speed={80}
               delay={500}
               className="font-dancing-script"
             />
           </h3>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            A dynamic social enterprise committed to transforming lives in underserved communities through education, 
+            A dynamic social enterprise committed to transforming lives in marginalized communities through education, 
             economic empowerment, and sustainable development.
           </p>
         </div>
@@ -102,12 +102,10 @@ export default function AboutSection() {
               Our Mission
             </h3>
             <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-              We create a positive and lasting impact by providing men, women, and children with the resources, 
-              education, and opportunities necessary to break the cycle of poverty and build brighter futures.
+              At Huruma Global Support Initiative Limited, we create positive, lasting change by equipping men, women, and children with the resources, education, and opportunities they need to break the cycle of poverty and build brighter futures — together.
             </p>
             <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-              Our operations are deeply rooted in the principles of long-term sustainability and directly align 
-              with the United Nations Sustainable Development Goals (SDGs), specifically SDG 1: No Poverty and SDG 4: Quality Education.
+              Our work is deeply rooted in the principles of long-term sustainability and is guided by the United Nations Sustainable Development Goals (SDGs), with a strong focus on SDG 1: No Poverty and SDG 4: Quality Education.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="bg-[#4e8046] hover:bg-[#002b4a] text-white px-8 py-3 rounded-full font-semibold transition-colors duration-200">

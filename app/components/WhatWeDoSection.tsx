@@ -15,7 +15,7 @@ const services: Service[] = [
   {
     id: 1,
     title: "Economic Empowerment",
-    description: "Empowering men and women with sustainable livelihoods through peer-to-peer mentorship, vocational training, and business development support.",
+    description: "We empower men and women to build sustainable livelihoods by providing peer-to-peer mentorship, hands-on vocational training, and comprehensive business development support — unlocking opportunities for lasting success.",
     icon: (
       <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10a10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 18a8 8 0 0 1-8-8a8 8 0 0 1 8-8a8 8 0 0 1 8 8a8 8 0 0 1-8 8m4.5-9.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5s1.5.67 1.5 1.5m-7 0c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5s1.5.67 1.5 1.5m3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5Z"/>
@@ -207,7 +207,7 @@ export default function WhatWeDoSection() {
             What We Are Doing
           </h2>
           <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#002b4a] mb-6">
-            We Are In A Mission To<br />Help The Helpless
+            We are on a mission to uplift and empower<br />the most vulnerable
           </h3>
         </div>
 

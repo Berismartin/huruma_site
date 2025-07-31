@@ -19,7 +19,7 @@ const carouselData: CarouselSlide[] = [
     id: 1,
     image: '/images/IMG_0404.webp',
     title: 'Empowering Communities',
-    subtitle: 'Breaking the Cycle of Poverty',
+    subtitle: 'We are on a mission to uplift marginalized communities',
     description: 'We provide men, women, and children with the resources, education, and opportunities necessary to build brighter futures.',
     ctaText: 'Learn About Our Work',
     ctaLink: '/work'
@@ -47,7 +47,7 @@ const carouselData: CarouselSlide[] = [
     image: '/images/IMG_0319.webp',
     title: 'Compassion in Action',
     subtitle: 'Putting Empathy into Practice',
-    description: 'Driven by deep empathy and unwavering dedication, we transform lives in underserved communities across Uganda.',
+    description: 'Driven by deep empathy and unwavering dedication, we transform lives in vulnerable communities across Uganda.',
     ctaText: 'Join Our Mission',
     ctaLink: '/about'
   }
@@ -207,20 +207,20 @@ export default function HeroCarousel() {
         </div>
       </motion.div>
 
-      {/* Organization Info Overlay - Fly in animation */}
-      {/* <AnimatePresence>
+      {/* Organization Info Overlay - Bottom Left */}
+      <AnimatePresence>
         {showInfoCard && (
           <motion.div
-            initial={{ x: 300, opacity: 0 }}
+            initial={{ x: -300, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={{ x: 300, opacity: 0 }}
+            exit={{ x: -300, opacity: 0 }}
             transition={{ 
               type: "spring", 
               stiffness: 100, 
               damping: 20,
               delay: 1.2 
             }}
-            className="absolute top-20 right-4 md:right-8 bg-white/10 backdrop-blur-sm rounded-lg p-4 text-white max-w-xs border border-white/20"
+            className="absolute bottom-20 left-4 md:left-8 bg-white/10 backdrop-blur-sm rounded-lg p-4 text-white max-w-xs border border-white/20"
           >
              <button
               onClick={() => setShowInfoCard(false)}
@@ -234,7 +234,7 @@ export default function HeroCarousel() {
             
             <h3 className="font-semibold text-lg mb-2 pr-6">Huruma Global Support Initiative</h3>
             <p className="text-sm opacity-90 mb-3">
-              Transforming lives in underserved communities through education, economic empowerment, and sustainable development.
+              Transforming lives in marginalized communities through education, economic empowerment, and sustainable development.
             </p>
             <div className="flex items-center space-x-2 text-sm">
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
@@ -244,7 +244,7 @@ export default function HeroCarousel() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence> */}
+      </AnimatePresence>
     </section>
   );
 } 

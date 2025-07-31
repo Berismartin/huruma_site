@@ -31,16 +31,16 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ 
-              duration: 0.8, 
+              duration: 1.2, 
               ease: "easeOut",
-              delay: 0.2
+              delay: 0.4
             }}
             className="min-h-screen"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: 0.6, duration: 1.0 }}
             >
               <Header />
             </motion.div>
@@ -48,7 +48,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 1.1 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
+              transition={{ delay: 1.0, duration: 1.2 }}
             >
               <HeroCarousel />
             </motion.div>
@@ -56,7 +56,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              transition={{ delay: 1.4, duration: 1.0 }}
             >
               <StatsSection />
             </motion.div>
@@ -64,7 +64,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0, duration: 0.6 }}
+              transition={{ delay: 1.8, duration: 1.0 }}
             >
               <AboutSection />
             </motion.div>
@@ -72,7 +72,7 @@ export default function Home() {
                         <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.6 }}
+              transition={{ delay: 2.2, duration: 1.0 }}
             >
               <WhatWeDoSection />
             </motion.div>
@@ -80,7 +80,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
+              transition={{ delay: 2.6, duration: 1.0 }}
             >
               <SuccessStorySection />
             </motion.div>
@@ -88,7 +88,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.6 }}
+              transition={{ delay: 3.0, duration: 1.0 }}
             >
               {/* <CoreValuesSection /> */}
             </motion.div>
@@ -96,7 +96,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8, duration: 0.6 }}
+              transition={{ delay: 3.4, duration: 1.0 }}
             >
               <TextOverlaySection />
             </motion.div>
@@ -104,7 +104,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.0, duration: 0.6 }}
+              transition={{ delay: 3.8, duration: 1.0 }}
             >
               <Footer />
             </motion.div>

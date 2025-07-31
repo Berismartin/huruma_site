@@ -110,7 +110,7 @@ export default function StatsSection() {
             Our Impact in Numbers
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Through our dedicated work in underserved communities, we've made measurable progress in education, 
+                          Through our dedicated work in marginalized communities, we've made measurable progress in education, 
             economic empowerment, and community development.
           </p>
         </div>

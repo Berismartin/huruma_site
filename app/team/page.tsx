@@ -34,10 +34,10 @@ const TeamPage = () => {
     }
   };
 
-  const leadershipTeam = [
+  const boardMembers = [
     {
       name: "Nabukalu Diana",
-      role: "Chairperson, Co-Founder & CEO",
+      role: "Chair",
       image: "/team/diana nabukalu.jpg",
       title: "The Founding Catalyst",
       bio: "Nabukalu Diana is the Founding Catalyst behind Huruma Global Support Initiative (HGSI). Her journey began with a quiet ache—witnessing children and families brimming with unfulfilled potential, weighed down not by a lack of ability but by a lack of opportunity. What began as empathy grew into a powerful conviction: that compassion must be translated into action—strategic, persistent, and deeply rooted in dignity.",
@@ -48,7 +48,7 @@ const TeamPage = () => {
     },
     {
       name: "Nabatanzi Edna",
-      role: "Head Finance and Administration, Vice Chairperson & Co-founder",
+      role: "Vice Chair",
       image: "/team/edna nabatanzi.jpg",
       title: "The Trust Builder",
       bio: "Raised on sacrifice and resilience, I know what it means to go without — and act like all is well. My mother's strength put me through school when we had nothing. Through the Huruma Global Support Initiative, I now work to ensure no Ugandan has to act, sacrifice alone, or lose hope. One life at a time, we rise together.",
@@ -59,7 +59,7 @@ const TeamPage = () => {
     },
     {
       name: "Mbaguta Brian",
-      role: "Head of Programs, Co-Founder & Secretary to the Board",
+      role: "Board Secretary",
       image: "/team/brian mbaguta.jpg",
       title: "The Advocate for the Forgotten",
       bio: "I joined HGSI because I could not ignore the silent cries of children and women who simply need someone to believe in them. Huruma is more than a team—it's a family, with a mission to restore dignity, create opportunity, and bring light where there's been darkness for too long. Every step we take brings hope to someone who thought they were forgotten. Being part of this journey is not just my calling—it's my purpose.",
@@ -70,7 +70,7 @@ const TeamPage = () => {
     },
     {
       name: "Lukermoi-Agaba Ryan",
-      role: "Head Youth and Volunteer Engagement, Co-Founder & Board member",
+      role: "Board Member",
       image: "/team/ryan lukermoi.jpg",
       title: "The Youth Empowerment Voice/Legacy bearer",
       bio: "Raised by a mother who led with compassion, I saw firsthand how care can be a form of power. She didn't just employ people—she nurtured them, educated them, and treated each like family. That legacy shaped me. Through HGSI, I carry her example forward, working to ensure every Ugandan feels seen, supported, and valued. We don't just change lives—we carry each other forward, a step at a time.",
@@ -81,7 +81,65 @@ const TeamPage = () => {
     },
     {
       name: "Richard Jones Odong",
-      role: "Head of Communications and Storytelling, Co-Founder & Board Member",
+      role: "Board Member",
+      image: "/team/richard odong.jpg",
+      title: "The Narrative Weaver",
+      bio: "Odong is the storyteller behind the movement—the keeper of Huruma Global Support Initiative's voice and soul. As Director of Communications and Storytelling and a Co-Founder & Board Member, Odong ensures that the heart of the work is not only felt—but heard, seen, and remembered.",
+      quote: "Stories don't just move people—they move people to act. That's how change begins.",
+      socials: {
+        email: "odong@hurumaglobalsupportinitiative.org"
+      }
+    }
+  ];
+
+  const leadershipTeam = [
+    {
+      name: "Nabukalu Diana",
+      role: "CEO",
+      image: "/team/diana nabukalu.jpg",
+      title: "The Founding Catalyst",
+      bio: "Nabukalu Diana is the Founding Catalyst behind Huruma Global Support Initiative (HGSI). Her journey began with a quiet ache—witnessing children and families brimming with unfulfilled potential, weighed down not by a lack of ability but by a lack of opportunity. What began as empathy grew into a powerful conviction: that compassion must be translated into action—strategic, persistent, and deeply rooted in dignity.",
+      quote: "Empathy must evolve into strategy. Dignity is not given it is restored. And that is the work of HGSI.",
+      socials: {
+        email: "diana@hurumaglobalsupportinitiative.org"
+      }
+    },
+    {
+      name: "Nabatanzi Edna",
+      role: "Head Finance and Administration",
+      image: "/team/edna nabatanzi.jpg",
+      title: "The Trust Builder",
+      bio: "Raised on sacrifice and resilience, I know what it means to go without — and act like all is well. My mother's strength put me through school when we had nothing. Through the Huruma Global Support Initiative, I now work to ensure no Ugandan has to act, sacrifice alone, or lose hope. One life at a time, we rise together.",
+      quote: "Raised on sacrifice and resilience, I know what it means to go without — and act like all is well. One life at a time, we rise together.",
+      socials: {
+        email: "edna@hurumaglobalsupportinitiative.org"
+      }
+    },
+    {
+      name: "Mbaguta Brian",
+      role: "Head Programs",
+      image: "/team/brian mbaguta.jpg",
+      title: "The Advocate for the Forgotten",
+      bio: "I joined HGSI because I could not ignore the silent cries of children and women who simply need someone to believe in them. Huruma is more than a team—it's a family, with a mission to restore dignity, create opportunity, and bring light where there's been darkness for too long. Every step we take brings hope to someone who thought they were forgotten. Being part of this journey is not just my calling—it's my purpose.",
+      quote: "I joined HGSI because I could not ignore the silent cries of children and women who simply need someone to believe in them.",
+      socials: {
+        email: "brian@hurumaglobalsupportinitiative.org"
+      }
+    },
+    {
+      name: "Lukermoi-Agaba Ryan",
+      role: "Head Youth and Volunteer Engagement",
+      image: "/team/ryan lukermoi.jpg",
+      title: "The Youth Empowerment Voice/Legacy bearer",
+      bio: "Raised by a mother who led with compassion, I saw firsthand how care can be a form of power. She didn't just employ people—she nurtured them, educated them, and treated each like family. That legacy shaped me. Through HGSI, I carry her example forward, working to ensure every Ugandan feels seen, supported, and valued. We don't just change lives—we carry each other forward, a step at a time.",
+      quote: "Young people are not just beneficiaries—they are leaders in motion.",
+      socials: {
+        email: "ryan@hurumaglobalsupportinitiative.org"
+      }
+    },
+    {
+      name: "Richard Jones Odong",
+      role: "Head Communications and Storytelling",
       image: "/team/richard odong.jpg",
       title: "The Narrative Weaver",
       bio: "Odong is the storyteller behind the movement—the keeper of Huruma Global Support Initiative's voice and soul. As Director of Communications and Storytelling and a Co-Founder & Board Member, Odong ensures that the heart of the work is not only felt—but heard, seen, and remembered.",
@@ -92,7 +150,7 @@ const TeamPage = () => {
     },
     {
       name: "Mbaguta Henry",
-      role: "Head of Information and Communication Technology",
+      role: "Head ICT",
       image: "/team/henry mbaguta.jpg",
       title: "The Digital Strategist",
       bio: "Mbaguta leads HGSI's ICT operations with vision, precision, and purpose. With a background in Information Technology, management, and corporate relations, Mbaguta is the driving force behind building the digital backbone that powers the HGSI's mission—from secure data systems and field connectivity to partner communications and reporting platforms.",
@@ -106,7 +164,7 @@ const TeamPage = () => {
   const extendedTeam = [
     {
       name: "Luyima Fredrick",
-      role: "Head of Partnerships, Resource Mobilisation & External Relations",
+      role: "Head Partnerships",
       image: "/team/fred luyima.jpg",
       title: "The Connector",
       bio: "Luyima is the strategic force behind Huruma Global Support Initiative's partnerships, fundraising, and external relations. With a strong background in management and corporate engagement, Luyima leads efforts to mobilize the resources that turn vision into reality—one partnership, one investment, one purpose-driven collaboration at a time.",
@@ -117,7 +175,7 @@ const TeamPage = () => {
     },
     {
       name: "Eric Okiria",
-      role: "Head, Impact & Learning",
+      role: "Head Impact and Learning",
       image: "/team/WhatsApp Image 2025-07-20 at 17.19.56_57484ebc.jpg",
       title: "The Impact Architect",
       bio: "I joined the Huruma Global Support Initiative team because I believe every child deserves to feel known, valued, and equipped for the future. Volunteering here has shown me that change happens not just through grand gestures, but through daily acts of care and belief in each child's potential. I'm proud to stand with HGSI, helping build a community where each child can grow up loved, educated, and ready to give back.",
@@ -128,7 +186,7 @@ const TeamPage = () => {
     },
     {
       name: "Ssebuguzi Alex",
-      role: "Program Officer, Sustainable Livelihoods",
+      role: "Program Officer Sustainable Livelihoods",
       image: "/team/alex ssebuguzi.jpg",
       title: "Program Officer",
       bio: "Huruma inspired me by helping struggling entrepreneurs and supporting school children with fees and materials across different districts. That impact touched me deeply—and that's why I chose to join and work with HGSI.",
@@ -155,31 +213,36 @@ const TeamPage = () => {
       name: "Lule Muganwa Edward",
       role: "Respected Elder and Mentor",
       quote: "It may be a small contribution, but to me, it is noteworthy. I thank the HGSI directors for giving me the chance to serve, even in this way.",
-      icon: "👴"
+      icon: "👴",
+      image: "/team/edward.jpg"
     },
     {
       name: "Charles",
       role: "The Boda Boda Rider with a Mission",
       quote: "These books, these supplies—they're heavy. But I carry them like they're gold. Because they are.",
-      icon: "🛵"
+      icon: "🛵",
+      image: "/team/charles.jpg"
     },
     {
       name: "Ronnie & Friends",
       role: "The Laptop Lifesavers",
       quote: "I may not be rich, but I can give what I have. Giving is my quiet way of building a better future for Uganda's children.",
-      icon: "💻"
+      icon: "💻",
+      image: "/team/ronnie.jpg"
     },
     {
       name: "Tisha",
       role: "The Silent Analyst",
       quote: "You won't see me at the front. But in the numbers, I make sure every child counts.",
-      icon: "📊"
+      icon: "📊",
+      image: "/team/tisha.jpg"
     },
     {
       name: "Maggie",
       role: "The Growing TikToker with a Big Heart",
       quote: "I use my platform to show that giving is cool, and kindness is powerful.",
-      icon: "📱"
+      icon: "📱",
+      image: "/team/maggie.jpg"
     }
   ];
 
@@ -240,8 +303,65 @@ const TeamPage = () => {
         </div>
       </section>
 
-      {/* Leadership Team Section */}
+      {/* Board Members Section */}
       <section className="py-20 px-4 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
+              Meet Our Board
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Our board of directors provides strategic guidance and governance
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {boardMembers.map((member, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 60 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-64">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="text-xl font-bold mb-1">{member.name}</h3>
+                    <p className="text-green-300 font-semibold">{member.role}</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4">{member.bio.substring(0, 150)}...</p>
+                  <a 
+                    href={`mailto:${member.socials.email}`} 
+                    className="text-green-600 hover:text-green-700 font-semibold text-sm flex items-center"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Contact
+                  </a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-green-50 to-blue-50">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 60 }}
@@ -429,8 +549,18 @@ const TeamPage = () => {
                 }}
               >
                 <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4 shadow-lg">
-                    <span className="text-3xl">{voice.icon}</span>
+                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4 shadow-lg overflow-hidden">
+                    {voice.image ? (
+                      <Image
+                        src={voice.image}
+                        alt={voice.name}
+                        width={64}
+                        height={64}
+                        className="object-cover w-full h-full"
+                      />
+                    ) : (
+                      <span className="text-3xl">{voice.icon}</span>
+                    )}
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-800">{voice.name}</h3>
@@ -476,7 +606,7 @@ const TeamPage = () => {
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <MapPin className="w-8 h-8 text-white mx-auto mb-4" />
                 <h3 className="text-white font-semibold mb-2">Address</h3>
-                <p className="text-green-100">P.O. Box 180486, Kampala - Uganda</p>
+                <p className="text-green-100">Makonzi zone Sserwadda Close Bukoto</p>
               </div>
             </div>
 

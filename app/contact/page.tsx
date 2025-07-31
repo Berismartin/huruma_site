@@ -59,7 +59,7 @@ const ContactPage = () => {
       icon: Phone,
       title: "Phone",
       value: "+256 748 020 214",
-      description: "Call us during business hours",
+      description: "Reach us at any time",
       color: "from-green-500 to-green-600"
     },
     {
@@ -72,7 +72,7 @@ const ContactPage = () => {
     {
       icon: MapPin,
       title: "Address",
-      value: "P.O. Box 180486, Kampala - Uganda",
+      value: "Makonzi zone Sserwadda Close Bukoto",
       description: "Main office location",
       color: "from-purple-500 to-purple-600"
     },
