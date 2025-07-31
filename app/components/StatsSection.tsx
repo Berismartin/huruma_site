@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useGSAPScroll } from '../hooks/useGSAPScroll';
 import { useCounterAnimation } from '../hooks/useCounterAnimation';
 import { Users, GraduationCap, Target, Heart } from 'lucide-react';
 
@@ -50,24 +49,11 @@ const stats: Stat[] = [
 ];
 
 export default function StatsSection() {
-  const { elementRef: titleRef, fadeInUp } = useGSAPScroll<HTMLDivElement>();
-  const { elementRef: statsRef, staggerChildren } = useGSAPScroll<HTMLDivElement>();
-
   // Counter animations for each stat
   const studentsCounter = useCounterAnimation({ end: 175, suffix: '+', delay: 200 });
   const teachersCounter = useCounterAnimation({ end: 11, delay: 400 });
   const pillarsCounter = useCounterAnimation({ end: 3, delay: 600 });
   const communityCounter = useCounterAnimation({ end: 100, suffix: '%', delay: 800 });
-
-  useEffect(() => {
-    // Ensure animations trigger properly
-    const timer = setTimeout(() => {
-      fadeInUp(0, 1);
-      staggerChildren(0.2, 0.3);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, [fadeInUp, staggerChildren]);
 
   return (
     <section className="py-16 md:py-24 bg-gray-50 relative overflow-hidden">
@@ -102,23 +88,17 @@ export default function StatsSection() {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div 
-          ref={titleRef}
-          className="text-center mb-12"
-        >
+        <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
             Our Impact in Numbers
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-                          Through our dedicated work in marginalized communities, we've made measurable progress in education, 
+            Through our dedicated work in marginalized communities, we've made measurable progress in education, 
             economic empowerment, and community development.
           </p>
         </div>
 
-        <div 
-          ref={statsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Students Counter */}
           <div
             ref={studentsCounter.elementRef}
@@ -239,8 +219,6 @@ export default function StatsSection() {
             </div>
           </div>
         </div>
-
-
       </div>
     </section>
   );

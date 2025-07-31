@@ -23,6 +23,7 @@ const OurWorkHeader = () => {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Our Work', href: '/our-work' },
+    { name: 'Team', href: '/team' },
     { name: 'Get Involved', href: '/get-involved' },
     { name: 'Contact', href: '/contact' }
   ];

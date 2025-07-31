@@ -17,6 +17,7 @@ import {
   Shield,
   Target
 } from 'lucide-react';
+import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const TeamPage = () => {
@@ -249,6 +250,8 @@ const TeamPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
+      <Header />
+      
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
