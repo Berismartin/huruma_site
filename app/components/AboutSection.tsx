@@ -12,35 +12,56 @@ export default function AboutSection() {
   const { elementRef: valuesRef, staggerChildren } = useGSAPScroll<HTMLDivElement>();
 
   useEffect(() => {
-    textReveal(0.5);
-    fadeInLeft(0.8, 1.2);
-    fadeInRight(1.0, 1.2);
-    staggerChildren(0.15, 1.5);
+    // Faster animations with shorter delays
+    textReveal(0.3); // Reduced from 0.5 to 0.3 seconds
+    fadeInLeft(0.4, 0.6); // Reduced delay from 0.8 to 0.4, duration from 1.2 to 0.6
+    fadeInRight(0.5, 0.6); // Reduced delay from 1.0 to 0.5, duration from 1.2 to 0.6
+    staggerChildren(0.08, 0.15); // Reduced stagger from 0.15 to 0.08, duration from 1.5 to 0.15
   }, [textReveal, fadeInLeft, fadeInRight, staggerChildren]);
 
   const values = [
     {
-      icon: "❤️",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+      ),
       title: "Compassion",
       description: "Deep empathy for those facing poverty and educational challenges drives us. We respond with genuine care and dedicated action to foster hope and make a tangible difference."
     },
     {
-      icon: "⚖️",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      ),
       title: "Integrity",
       description: "We uphold the highest ethical standards in all we do. Transparency, accountability, and honesty ensure that every contribution is utilized effectively and responsibly to achieve our mission."
     },
     {
-      icon: "👑",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+        </svg>
+      ),
       title: "Dignity",
       description: "Every individual has inherent worth. Our programs empower men, women, and children to lead dignified lives, building self-reliance and enabling them to shape their own prosperous futures."
     },
     {
-      icon: "🤝",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+      ),
       title: "Respect",
       description: "We deeply respect the local knowledge, cultures, and aspirations of the communities we serve. Our initiatives are collaborative, culturally sensitive, and inclusive, valuing every individual's unique contribution."
     },
     {
-      icon: "🛠️",
+      icon: (
+        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A1.5 1.5 0 0 0 18.54 8H17c-.8 0-1.54.37-2.01 1l-4.7 6.3c-.33.44-.49.98-.49 1.53V20c0 1.1.9 2 2 2h6c1.1 0 2-.9 2-2zM12.5 11.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S11 9.17 11 10s.67 1.5 1.5 1.5zM5.5 6c1.11 0 2-.89 2-2s-.89-2-2-2-2 .89-2 2 .89 2 2 2zm2 16v-7H9V9c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v6.5h1.5V22h4z"/>
+        </svg>
+      ),
       title: "Service",
       description: "Our dedication is to actively serve those in need. We provide essential resources, education, and opportunities to overcome poverty, focusing on long-term impact and a more equitable future for all."
     }
@@ -89,7 +110,7 @@ export default function AboutSection() {
             <TypewriterText 
               text="We are on a mission to uplift marginalized communities"
               speed={80}
-              delay={500}
+              delay={200}
               className="font-dancing-script"
             />
           </h3>
@@ -167,7 +188,7 @@ export default function AboutSection() {
           {values.map((value, index) => (
             <div
               key={index}
-              className="bg-gray-50 rounded-lg p-6 text-center hover:bg-gray-100 transition-colors duration-300 relative overflow-hidden group"
+              className="bg-gray-50 rounded-lg p-6 text-center hover:bg-gray-100 transition-all duration-300 relative overflow-hidden group transform hover:-translate-y-1 hover:shadow-lg"
             >
                <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
                 <div className="absolute top-2 right-2 w-6 h-6 bg-[#4e8046] rounded-full"></div>
@@ -175,11 +196,15 @@ export default function AboutSection() {
               </div>
               
               <div className="relative z-10">
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                <div className="flex justify-center mb-4">
+                  <div className="p-2 rounded-full bg-[#4e8046]/10 text-[#4e8046] group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                    {value.icon}
+                  </div>
+                </div>
+                <h4 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-[#4e8046] transition-colors duration-300">
                   {value.title}
                 </h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
                   {value.description}
                 </p>
               </div>
