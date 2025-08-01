@@ -29,96 +29,95 @@ export default function Home() {
       <AnimatePresence>
         {showContent && (
           <motion.main
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ 
-              duration: 1.2, 
-              ease: "easeOut",
-              delay: 0.4
+              duration: 0.5, 
+              ease: "easeOut"
             }}
             className="min-h-screen"
           >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 1.0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
             >
               <Header />
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, scale: 1.1 }}
+              initial={{ opacity: 0, scale: 1.05 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.0, duration: 1.2 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
             >
               <HeroCarousel />
             </motion.div>
             
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 1.0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
             >
               <StatsSection />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8, duration: 1.0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
             >
               <AboutSection />
             </motion.div>
 
-                        <motion.div
-              initial={{ opacity: 0, y: 30 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.2, duration: 1.0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
             >
               <WhatWeDoSection />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 2.6, duration: 1.0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
             >
               <SuccessStorySection />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.0, duration: 1.0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
             >
               <ImpactStoriesSection />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.4, duration: 1.0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
             >
               {/* <CoreValuesSection /> */}
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3.8, duration: 1.0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
             >
               <TextOverlaySection />
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 4.2, duration: 1.0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
             >
               <Footer />
             </motion.div>
               
-            </motion.main>
+          </motion.main>
         )}
       </AnimatePresence>
     </>

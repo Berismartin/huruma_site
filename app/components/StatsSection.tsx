@@ -2,7 +2,52 @@
 
 import { useEffect } from 'react';
 import { useGSAPScroll } from '../hooks/useGSAPScroll';
-import AnimatedCounter from './ui/AnimatedCounter';
+import { useCounterAnimation } from '../hooks/useCounterAnimation';
+import { Users, GraduationCap, Target, Heart } from 'lucide-react';
+
+interface Stat {
+  id: number;
+  number: number;
+  suffix: string;
+  label: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+const stats: Stat[] = [
+  {
+    id: 1,
+    number: 175,
+    suffix: '+',
+    label: 'Students Supported',
+    description: 'Children receiving educational materials and support',
+    icon: <Users className="w-8 h-8" />
+  },
+  {
+    id: 2,
+    number: 11,
+    suffix: '',
+    label: 'Teachers Empowered',
+    description: 'Educators receiving training and resources',
+    icon: <GraduationCap className="w-8 h-8" />
+  },
+  {
+    id: 3,
+    number: 3,
+    suffix: '',
+    label: 'Strategic Pillars',
+    description: 'Holistic approach to community development',
+    icon: <Target className="w-8 h-8" />
+  },
+  {
+    id: 4,
+    number: 100,
+    suffix: '%',
+    label: 'Community Focused',
+    description: 'Dedicated to sustainable local impact',
+    icon: <Heart className="w-8 h-8" />
+  }
+];
 
 export default function StatsSection() {
   const { elementRef: titleRef, fadeInUp } = useGSAPScroll<HTMLDivElement>();
@@ -14,48 +59,11 @@ export default function StatsSection() {
     staggerChildren(0.1, 0.3);
   }, [fadeInUp, staggerChildren]);
 
-  const stats = [
-    {
-      number: 175,
-      suffix: "+",
-      label: "Students Supported",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-        </svg>
-      )
-    },
-    {
-      number: 11,
-      suffix: "",
-      label: "Dedicated Teachers",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/>
-        </svg>
-      )
-    },
-    {
-      number: 5,
-      suffix: "",
-      label: "Years of Impact",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-        </svg>
-      )
-    },
-    {
-      number: 1000,
-      suffix: "+",
-      label: "Lives Touched",
-      icon: (
-        <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-      )
-    }
-  ];
+  // Counter animations for each stat
+  const studentsCounter = useCounterAnimation({ end: 175, suffix: '+', delay: 200 });
+  const teachersCounter = useCounterAnimation({ end: 11, delay: 400 });
+  const pillarsCounter = useCounterAnimation({ end: 3, delay: 600 });
+  const communityCounter = useCounterAnimation({ end: 100, suffix: '%', delay: 800 });
 
   return (
     <section className="py-20 bg-gradient-to-r from-[#4e8046] to-[#4f9aa9] relative overflow-hidden">
@@ -70,7 +78,7 @@ export default function StatsSection() {
           ref={titleRef}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 loading-fast">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Our Impact in Numbers
           </h2>
           <p className="text-xl text-white/90 max-w-3xl mx-auto">
@@ -81,39 +89,122 @@ export default function StatsSection() {
         {/* Stats Grid */}
         <div 
           ref={statsRef}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="text-center group"
-            >
-              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/20 transition-all duration-300 transform hover:scale-105">
-                <div className="flex justify-center mb-4">
-                  <div className="text-white/80 group-hover:text-white transition-colors duration-300">
-                    {stat.icon}
-                  </div>
-                </div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2" style={{
-                      fontSize: '2rem',
-                      fontWeight: 'bold',
-                      color: 'white',
-                      textShadow: '0 0 10px rgba(0, 0, 0, 0.3)',
-                    }}>
-                  <AnimatedCounter 
-                    end={stat.number} 
-                    duration={2}
-                    suffix={stat.suffix}
-                  />
-                </div>
-                <div className="text-white/90 text-sm md:text-base">
-                  {stat.label}
+          {/* Students Counter */}
+          <div
+            ref={studentsCounter.elementRef}
+            className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+              <div className="absolute top-2 right-2 w-8 h-8 bg-[#4e8046] rounded-full"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 bg-[#4f9aa9] rounded-full"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-[#4e8046]/10 rounded-full text-[#4e8046] group-hover:bg-[#4e8046]/20 transition-colors duration-300">
+                  <Users className="w-8 h-8" />
                 </div>
               </div>
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                {studentsCounter.count}+
+              </div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">
+                Students Supported
+              </div>
+              <div className="text-sm text-gray-600">
+                Children receiving educational materials and support
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Teachers Counter */}
+          <div
+            ref={teachersCounter.elementRef}
+            className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+              <div className="absolute top-2 right-2 w-8 h-8 bg-[#4e8046] rounded-full"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 bg-[#4f9aa9] rounded-full"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-[#4f9aa9]/10 rounded-full text-[#4f9aa9] group-hover:bg-[#4f9aa9]/20 transition-colors duration-300">
+                  <GraduationCap className="w-8 h-8" />
+                </div>
+              </div>
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                {teachersCounter.count}
+              </div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">
+                Teachers Empowered
+              </div>
+              <div className="text-sm text-gray-600">
+                Educators receiving training and resources
+              </div>
+            </div>
+          </div>
+
+          {/* Strategic Pillars Counter */}
+          <div
+            ref={pillarsCounter.elementRef}
+            className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+              <div className="absolute top-2 right-2 w-8 h-8 bg-[#4e8046] rounded-full"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 bg-[#4f9aa9] rounded-full"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-[#002b4a]/10 rounded-full text-[#002b4a] group-hover:bg-[#002b4a]/20 transition-colors duration-300">
+                  <Target className="w-8 h-8" />
+                </div>
+              </div>
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                {pillarsCounter.count}
+              </div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">
+                Strategic Pillars
+              </div>
+              <div className="text-sm text-gray-600">
+                Holistic approach to community development
+              </div>
+            </div>
+          </div>
+
+          {/* Community Focused Counter */}
+          <div
+            ref={communityCounter.elementRef}
+            className="bg-white rounded-lg p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-300">
+              <div className="absolute top-2 right-2 w-8 h-8 bg-[#4e8046] rounded-full"></div>
+              <div className="absolute bottom-2 left-2 w-6 h-6 bg-[#4f9aa9] rounded-full"></div>
+            </div>
+            
+            <div className="relative z-10">
+              <div className="flex justify-center mb-4">
+                <div className="p-3 bg-[#4e8046]/10 rounded-full text-[#4e8046] group-hover:bg-[#4e8046]/20 transition-colors duration-300">
+                  <Heart className="w-8 h-8" />
+                </div>
+              </div>
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                {communityCounter.count}%
+              </div>
+              <div className="text-lg font-semibold text-gray-900 mb-2">
+                Community Focused
+              </div>
+              <div className="text-sm text-gray-600">
+                Dedicated to sustainable local impact
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+
     </section>
   );
 } 

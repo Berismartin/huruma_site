@@ -32,7 +32,7 @@ export default function LoadingScreen({ onLoadingComplete }: LoadingScreenProps)
       // Add a small delay before completing
       const timer = setTimeout(() => {
         setIsLoading(false);
-        setTimeout(onLoadingComplete, 1000); // Wait for exit animation
+        setTimeout(onLoadingComplete, 300); // Reduced from 1000ms to 300ms
       }, 500);
       return () => clearTimeout(timer);
     }
