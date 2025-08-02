@@ -31,6 +31,11 @@ export function useCounterAnimation({
           if (entry.isIntersecting && !isAnimating) {
             setIsAnimating(true);
             
+            // Disconnect the observer immediately to prevent retriggering
+            if (observerRef.current) {
+              observerRef.current.disconnect();
+            }
+            
             // Start animation after delay
             setTimeout(() => {
               const startTime = performance.now();

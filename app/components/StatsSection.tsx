@@ -60,10 +60,10 @@ export default function StatsSection() {
   }, [fadeInUp, staggerChildren]);
 
   // Counter animations for each stat
-  const studentsCounter = useCounterAnimation({ end: 175, suffix: '+', delay: 200 });
-  const teachersCounter = useCounterAnimation({ end: 11, delay: 400 });
-  const pillarsCounter = useCounterAnimation({ end: 3, delay: 600 });
-  const communityCounter = useCounterAnimation({ end: 100, suffix: '%', delay: 800 });
+  const studentsCounter = useCounterAnimation({ end: 175, suffix: '+', delay: 1500 });
+  const teachersCounter = useCounterAnimation({ end: 11, delay: 1700 });
+  const pillarsCounter = useCounterAnimation({ end: 3, delay: 1900 });
+  const communityCounter = useCounterAnimation({ end: 100, suffix: '%', delay: 2100 });
 
   return (
     <section className="py-20 bg-gradient-to-r from-[#4e8046] to-[#4f9aa9] relative overflow-hidden">
