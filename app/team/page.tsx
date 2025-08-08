@@ -254,8 +254,17 @@ const TeamPage = () => {
       
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/team/diana nabukalu.jpg')] bg-cover bg-center opacity-30"></div>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/IMG_0993.webp"
+            alt="HGSI Team Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-600/80 to-blue-600/80"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div 
@@ -508,67 +517,7 @@ const TeamPage = () => {
       </section>
 
       {/* Voices of Huruma Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
-              Voices of Huruma
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Because this movement is built by many hands, hearts, and voices
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {voicesOfHuruma.map((voice, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-green-100"
-                whileHover={{ 
-                  scale: 1.03,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mr-4 shadow-lg overflow-hidden">
-                    {voice.image ? (
-                      <Image
-                        src={voice.image}
-                        alt={voice.name}
-                        width={64}
-                        height={64}
-                        className="object-cover w-full h-full"
-                      />
-                    ) : (
-                      <span className="text-3xl">{voice.icon}</span>
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800">{voice.name}</h3>
-                    <p className="text-sm text-gray-600">{voice.role}</p>
-                  </div>
-                </div>
-                <div className="bg-white rounded-xl p-6 shadow-sm">
-                  <p className="text-gray-700 italic leading-relaxed">"{voice.quote}"</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* <section> */}
 
       {/* Join Our Team Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-green-600 to-blue-600">
@@ -605,14 +554,19 @@ const TeamPage = () => {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center mx-auto"
+            <a
+              href="/contact"
+              className="inline-block"
             >
-              Get Involved
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center mx-auto"
+              >
+                Get Involved
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </motion.button>
+            </a>
           </motion.div>
         </div>
       </section>

@@ -21,8 +21,8 @@ export default function AboutHeader() {
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Our Work', href: '/our-work' },
-    { name: 'Impact', href: '/impact' },
-    { name: 'Blog', href: '/blog' },
+    // { name: 'Impact', href: '/impact' },
+    { name: 'Get Involved', href: '/get-involved' },
     { name: 'Contact', href: '/contact' },
   ];
 
