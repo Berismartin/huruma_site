@@ -711,14 +711,16 @@ const AboutPage = () => {
               </div>
             </div>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="mt-12 bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center mx-auto"
-            >
-              Join Our Mission
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </motion.button>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="mt-12 bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center mx-auto"
+              >
+                Join Our Mission
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>

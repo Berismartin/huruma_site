@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   BookOpen, 
   Users, 
@@ -31,7 +32,8 @@ const OurWorkPage = () => {
       impact: "500+ students supported",
       status: "Active",
       color: "green",
-      image: "/images/P7_STUDENTS.png",
+      image: "/images/pens4.jpg",
+      link: "/our-work/ple-empowerment",
       features: [
         "Scholastic materials provision",
         "Revision guides and textbooks",
@@ -46,7 +48,8 @@ const OurWorkPage = () => {
       impact: "1,000+ monthly contributors",
       status: "Active",
       color: "blue",
-      image: "/images/IMG_0314.webp",
+      image: "/images/IMG_E2780 (1).jpg",
+      link: "/our-work/1k-project",
       features: [
         "Monthly peer contributions",
         "Educational support fund",
@@ -62,6 +65,7 @@ const OurWorkPage = () => {
       status: "Active",
       color: "purple",
       image: "/images/IMG_0372.webp",
+      link: "/our-work/sustainable-livelihoods",
       features: [
         "Vocational skills training",
         "Business mentorship",
@@ -112,7 +116,7 @@ const OurWorkPage = () => {
       location: "Murambo Catholic Nursery and Primary School",
       description: "Our first major project that started it all. We provided scholastic materials to seven P7 students who were desperate for revision guides.",
       impact: "100% pass rate achieved",
-      image: "/images/P7_STUDENTS.png",
+      image: "/images/IMG_1011.jpg",
       quote: "The sparkle of hope in those children's eyes was undeniable. We knew this couldn't be a one-off.",
       author: "Nabukalu Diana",
       role: "CEO & Co-Founder"
@@ -316,10 +320,13 @@ const OurWorkPage = () => {
                     ))}
                   </div>
                   
-                  <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2">
+                  {/* <Link 
+                    href={program.link}
+                    className="inline-block bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2"
+                  >
                     <span>Learn More</span>
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Link> */}
                 </div>
               </motion.div>
             ))}
@@ -467,14 +474,14 @@ const OurWorkPage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center justify-center">
+              <Link href={'/donate'} className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center justify-center">
                 <span>Donate Now</span>
                 <Heart className="w-5 h-5 ml-2" />
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors duration-300 flex items-center justify-center">
+              </Link>
+              <Link href={'/contact'} className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors duration-300 flex items-center justify-center">
                 <span>Volunteer</span>
                 <Users className="w-5 h-5 ml-2" />
-              </button>
+              </Link>
             </div>
           </motion.div>
         </div>

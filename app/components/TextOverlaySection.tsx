@@ -87,21 +87,35 @@ const TextOverlaySection = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-[#1B4D3E] hover:bg-[#2D5A4A] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg"
+          <a
+            href="/donate"
+            tabIndex={-1}
+            className="inline-block"
           >
-            Donate Now
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-[#1B4D3E] hover:bg-[#2D5A4A] text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300 shadow-lg"
+              type="button"
+            >
+              Donate Now
+            </motion.button>
+          </a>
           
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#1B4D3E] transition-all duration-300"
+          <a
+            href="/contact"
+            tabIndex={-1}
+            className="inline-block"
           >
-            Volunteer With Us
-          </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-[#1B4D3E] transition-all duration-300"
+              type="button"
+            >
+              Volunteer With Us
+            </motion.button>
+          </a>
         </motion.div>
         
         <motion.div

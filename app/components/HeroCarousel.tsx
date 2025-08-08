@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 interface CarouselSlide {
   id: number;
@@ -22,7 +23,7 @@ const carouselData: CarouselSlide[] = [
     subtitle: 'We are on a mission to uplift marginalized communities',
     description: 'We provide men, women, and children with the resources, education, and opportunities necessary to build brighter futures.',
     ctaText: 'Learn About Our Work',
-    ctaLink: '/work'
+    ctaLink: '/our-work'
   },
   {
     id: 2,
@@ -40,7 +41,7 @@ const carouselData: CarouselSlide[] = [
     subtitle: 'Building Resilient Communities',
     description: 'Our holistic approach focuses on economic empowerment, infrastructure improvement, and community development.',
     ctaText: 'See Our Impact',
-    ctaLink: '/impact'
+    ctaLink: '/our-work'
   },
   {
     id: 4,
@@ -49,7 +50,7 @@ const carouselData: CarouselSlide[] = [
     subtitle: 'Putting Empathy into Practice',
     description: 'Driven by deep empathy and unwavering dedication, we transform lives in vulnerable communities across Uganda.',
     ctaText: 'Join Our Mission',
-    ctaLink: '/about'
+    ctaLink: '/contact'
   }
 ];
 
@@ -149,9 +150,12 @@ export default function HeroCarousel() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
                 >
-                  <button className="bg-[#5bc54b] hover:bg-[#002b4a] text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
+                  <Link 
+                    href={carouselData[currentSlide].ctaLink}
+                    className="inline-block bg-[#5bc54b] hover:bg-[#002b4a] text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg"
+                  >
                     {carouselData[currentSlide].ctaText}
-                  </button>
+                  </Link>
                 </motion.div>
               </div>
             </div>

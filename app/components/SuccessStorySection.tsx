@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useGSAPScroll } from '../hooks/useGSAPScroll';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function SuccessStorySection() {
   const { elementRef: contentRef, fadeInLeft } = useGSAPScroll<HTMLDivElement>();
@@ -96,9 +97,12 @@ export default function SuccessStorySection() {
                 </div>
 
                 {/* Call to Action Button */}
-                <button className="bg-white text-[#4e8046] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors duration-200 uppercase tracking-wide">
+                <Link 
+                  href="/full-story" 
+                  className="inline-block bg-white text-[#4e8046] hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition-colors duration-200 uppercase tracking-wide"
+                >
                   Read The Full Story
-                </button>
+                </Link>
               </div>
             </div>
           </div>
