@@ -1,0 +1,39 @@
+# Pesapal Payment Gateway Configuration
+# Get these values from your Pesapal merchant dashboard
+# Copy this file to .env.local and fill in your actual values
+
+PESAPAL_CONSUMER_KEY=your_pesapal_consumer_key_here
+PESAPAL_CONSUMER_SECRET=your_pesapal_consumer_secret_here
+
+# Email Configuration (SMTP)
+# Configure your email service provider settings
+# Common providers:
+# Gmail: smtp.gmail.com, port 587, secure=false (use App Password)
+# Outlook: smtp-mail.outlook.com, port 587, secure=false
+# Yahoo: smtp.mail.yahoo.com, port 587, secure=false
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password_here
+
+# Next.js Configuration
+NEXTAUTH_URL=http://localhost:3000
+
+
+
+
+
+2. Gmail Setup (Recommended):
+Enable 2FA on your Gmail account
+Generate App Password:
+Go to Google Account settings
+Security → 2-Step Verification → App passwords
+Generate password for "Mail"
+Use this password in SMTP_PASS
+3. Test the Implementation:
+Start your development server: npm run dev
+Visit /contact page
+Fill out and submit the contact form
+Check your info@hurumaglobalsupportinitiative.org inbox

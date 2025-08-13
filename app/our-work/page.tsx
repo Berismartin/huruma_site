@@ -168,7 +168,7 @@ const OurWorkPage = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/images/IMG_0314.webp')] bg-cover bg-center opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('/images2/IMG_3589.jpg')] bg-cover bg-center opacity-30"></div>
         
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div 

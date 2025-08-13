@@ -29,6 +29,7 @@ const ContactPage = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -41,17 +42,73 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 3000);
+    try {
+      // Send email using our API endpoint
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        
+        // Show success popup first
+        setShowSuccessPopup(true);
+        
+        // Hide popup after 3 seconds and show form success message
+        setTimeout(() => {
+          setShowSuccessPopup(false);
+          setIsSubmitted(true);
+          
+          // Reset form after additional 5 seconds
+          setTimeout(() => {
+            setIsSubmitted(false);
+            setFormData({ name: '', email: '', subject: '', message: '' });
+          }, 5000);
+        }, 3000);
+      } else {
+        throw new Error(result.error || 'Failed to send email');
+      }
+      
+    } catch (error: any) {
+      console.error('Error sending email:', error);
+      setIsSubmitting(false);
+      
+      // Create mailto link as fallback
+      const mailtoLink = `mailto:info@hurumaglobalsupportinitiative.org?subject=${encodeURIComponent(
+        `${formData.subject} - Contact from ${formData.name}`
+      )}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+
+      // Show error and offer fallback
+      const useMailto = confirm(
+        `Email sending failed: ${error.message}\n\nWould you like to open your email client as a fallback?`
+      );
+      
+      if (useMailto) {
+        window.location.href = mailtoLink;
+        setShowSuccessPopup(true);
+        setTimeout(() => {
+          setShowSuccessPopup(false);
+          setIsSubmitted(true);
+          setTimeout(() => {
+            setIsSubmitted(false);
+            setFormData({ name: '', email: '', subject: '', message: '' });
+          }, 5000);
+        }, 3000);
+      }
+    }
   };
 
   const contactInfo = [
@@ -98,7 +155,7 @@ const ContactPage = () => {
       role: "CEO & Co-Founder",
       email: "diana@hurumaglobalsupportinitiative.org",
       phone: "+256 748 020 214",
-      image: "/images/IMG_0314.webp",
+      image: "/team/diana nabukalu.jpg",
       department: "Leadership"
     },
     {
@@ -106,7 +163,7 @@ const ContactPage = () => {
       role: "Head Finance and Administration",
       email: "edna@hurumaglobalsupportinitiative.org",
       phone: "+256 XXX XXX XXX",
-      image: "/images/IMG_0335.webp",
+      image: "/team/edna nabatanzi.jpg",
       department: "Finance"
     },
     {
@@ -114,7 +171,7 @@ const ContactPage = () => {
       role: "Head of Programs",
       email: "brian@hurumaglobalsupportinitiative.org",
       phone: "+256 XXX XXX XXX",
-      image: "/images/IMG_0316.webp",
+      image: "/team/brian mbaguta.jpg",
       department: "Programs"
     }
   ];
@@ -145,8 +202,17 @@ const ContactPage = () => {
       
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/images/IMG_0314.webp')] bg-cover bg-center opacity-30"></div>
+        <div className="absolute inset-0">
+          <Image
+            src="/images/IMG_E2860.webp"
+            alt="Contact Us Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-600/80 to-blue-600/80"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div 
@@ -196,7 +262,7 @@ const ContactPage = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <motion.div
                 key={index}
@@ -204,14 +270,14 @@ const ContactPage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="text-center"
+                className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 text-center"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${info.color} rounded-full flex items-center justify-center mx-auto mb-6`}>
+                <div className={`w-16 h-16 bg-gradient-to-br ${info.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
                   <info.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{info.title}</h3>
-                <p className="text-lg text-gray-600 mb-2">{info.value}</p>
-                <p className="text-sm text-gray-500">{info.description}</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{info.title}</h3>
+                <p className="text-gray-600 mb-2 font-medium text-sm leading-relaxed">{info.value}</p>
+                <p className="text-xs text-gray-500">{info.description}</p>
               </motion.div>
             ))}
           </div>
@@ -238,17 +304,18 @@ const ContactPage = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 border border-green-200 rounded-2xl p-6 text-center"
+                  className="bg-gradient-to-r from-green-50 to-blue-50 border border-green-200 rounded-2xl p-8 text-center shadow-lg"
                 >
-                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-                  <h3 className="text-xl font-bold text-green-800 mb-2">Message Sent!</h3>
-                  <p className="text-green-700">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                  <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
+                  <h3 className="text-2xl font-bold text-green-800 mb-4">Message Sent Successfully!</h3>
+                  <p className="text-green-700 text-lg leading-relaxed">Your message has been sent directly to our team at <span className="font-semibold">info@hurumaglobalsupportinitiative.org</span>. We've received your inquiry and will respond promptly.</p>
+                  <p className="text-green-600 text-sm mt-4">We'll get back to you within 24 hours!</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="name" className="block text-sm font-semibold text-black mb-2">
                         Full Name *
                       </label>
                       <input
@@ -258,12 +325,12 @@ const ContactPage = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                         placeholder="Your full name"
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-semibold text-black mb-2">
                         Email Address *
                       </label>
                       <input
@@ -273,14 +340,14 @@ const ContactPage = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                         placeholder="your.email@example.com"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="subject" className="block text-sm font-semibold text-black mb-2">
                       Subject *
                     </label>
                     <select
@@ -289,7 +356,7 @@ const ContactPage = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black"
                     >
                       <option value="">Select a subject</option>
                       <option value="general">General Inquiry</option>
@@ -302,7 +369,7 @@ const ContactPage = () => {
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="message" className="block text-sm font-semibold text-black mb-2">
                       Message *
                     </label>
                     <textarea
@@ -312,15 +379,17 @@ const ContactPage = () => {
                       onChange={handleInputChange}
                       required
                       rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                       placeholder="Tell us how we can help you..."
                     />
                   </div>
                   
-                  <button
+                  <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-green-600 hover:bg-green-700 disabled:bg-gray-400 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-300 flex items-center justify-center space-x-2"
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
                   >
                     {isSubmitting ? (
                       <>
@@ -333,7 +402,7 @@ const ContactPage = () => {
                         <Send className="w-5 h-5" />
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </motion.div>
@@ -348,16 +417,34 @@ const ContactPage = () => {
               <h2 className="text-3xl font-bold text-gray-800 mb-6">Visit Our Office</h2>
               
               {/* Map Placeholder */}
-              <div className="bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl p-8 mb-8 text-center">
-                <Globe className="w-16 h-16 text-green-600 mx-auto mb-4" />
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Kampala, Uganda</h3>
-                <p className="text-gray-600 mb-4">
+              <div className="bg-gradient-to-br from-green-100 to-blue-100 rounded-2xl p-8 mb-8 text-center shadow-lg">
+                <Globe className="w-20 h-20 text-green-600 mx-auto mb-6" />
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Kampala, Uganda</h3>
+                <p className="text-gray-600 mb-6 text-lg leading-relaxed">
                   Our main office is located in the heart of Kampala, serving communities across Uganda.
                 </p>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p><strong>Address:</strong> P.O. Box 180486, Kampala - Uganda</p>
-                  <p><strong>Hours:</strong> Monday - Friday, 8:00 AM - 5:00 PM EAT</p>
-                  <p><strong>Phone:</strong> +256 748 020 214</p>
+                <div className="bg-white rounded-xl p-6 space-y-3 text-left shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <MapPin className="w-5 h-5 text-green-600" />
+                    <div>
+                      <p className="font-semibold text-gray-800">Address</p>
+                      <p className="text-gray-600 text-sm">P.O. Box 180486, Kampala - Uganda</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Clock className="w-5 h-5 text-green-600" />
+                    <div>
+                      <p className="font-semibold text-gray-800">Hours</p>
+                      <p className="text-gray-600 text-sm">Monday - Friday, 8:00 AM - 5:00 PM EAT</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <Phone className="w-5 h-5 text-green-600" />
+                    <div>
+                      <p className="font-semibold text-gray-800">Phone</p>
+                      <p className="text-gray-600 text-sm">+256 748 020 214</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -498,18 +585,95 @@ const ContactPage = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center justify-center">
+              <motion.a
+                href="/get-involved"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white text-green-600 px-8 py-4 rounded-full font-semibold hover:bg-green-50 transition-colors duration-300 flex items-center justify-center shadow-lg"
+              >
                 <span>Get Involved</span>
                 <ArrowRight className="w-5 h-5 ml-2" />
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors duration-300 flex items-center justify-center">
+              </motion.a>
+              <motion.a
+                href="/about"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-green-600 transition-colors duration-300 flex items-center justify-center"
+              >
                 <span>Learn More</span>
                 <MessageCircle className="w-5 h-5 ml-2" />
-              </button>
+              </motion.a>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Success Popup */}
+      {showSuccessPopup && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.5, opacity: 0 }}
+            transition={{ type: "spring", duration: 0.5 }}
+            className="bg-white rounded-3xl p-8 text-center shadow-2xl max-w-md w-full"
+          >
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", duration: 0.6 }}
+              className="w-24 h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <motion.div
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ delay: 0.5, duration: 0.8 }}
+              >
+                <CheckCircle className="w-12 h-12 text-white" />
+              </motion.div>
+            </motion.div>
+            
+            <motion.h3
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-2xl font-bold text-gray-800 mb-4"
+            >
+              Email Sent Successfully!
+            </motion.h3>
+            
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="text-gray-600 leading-relaxed"
+            >
+              Your message has been delivered to our team. We'll respond within 24 hours.
+            </motion.p>
+            
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 1, duration: 0.3 }}
+              className="mt-6"
+            >
+              <div className="w-full bg-green-100 rounded-full h-1">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ delay: 1.2, duration: 3 }}
+                  className="bg-green-500 h-1 rounded-full"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Footer */}
       <Footer />

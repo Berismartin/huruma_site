@@ -41,7 +41,7 @@ export default function SuccessStorySection() {
           <div ref={imageRef} className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
               <Image
-                src="/images/IMG_0319.webp"
+                src="/images2/IMG_3589.jpg"
                 alt="Children receiving educational materials at Murambo School"
                 width={600}
                 height={400}

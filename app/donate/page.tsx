@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { 
   Heart, 
   Users, 
@@ -19,9 +20,12 @@ import {
   Gift,
   Target,
   Lightbulb,
-  Award
+  Award,
+  X,
+  AlertTriangle
 } from 'lucide-react';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const DonatePage = () => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
@@ -32,6 +36,18 @@ const DonatePage = () => {
     email: '',
     phone: '',
     anonymous: false
+  });
+
+  const [errorDialog, setErrorDialog] = useState({
+    show: false,
+    title: '',
+    message: ''
+  });
+
+  const [paymentModal, setPaymentModal] = useState({
+    show: false,
+    checkoutUrl: '',
+    orderTrackingId: ''
   });
 
   const fadeInUp = {
@@ -49,12 +65,12 @@ const DonatePage = () => {
   };
 
   const donationAmounts = [
-    { amount: 10, label: 'School Supplies', description: 'Provides basic school materials for one child' },
-    { amount: 25, label: 'Monthly Support', description: 'Supports a child\'s education for one month' },
-    { amount: 50, label: 'Family Empowerment', description: 'Helps a family with livelihood training' },
-    { amount: 100, label: 'Community Impact', description: 'Funds community development projects' },
-    { amount: 250, label: 'Sustainable Change', description: 'Creates lasting impact in communities' },
-    { amount: 500, label: 'Transformational Gift', description: 'Transforms multiple lives and communities' }
+    { amount: 50000, label: 'School Supplies', description: 'Provides basic school materials for one child' },
+    { amount: 100000, label: 'Monthly Support', description: 'Supports a child\'s education for one month' },
+    { amount: 150000, label: 'Family Empowerment', description: 'Helps a family with livelihood training' },
+    { amount: 200000, label: 'Community Impact', description: 'Funds community development projects' },
+    { amount: 250000, label: 'Sustainable Change', description: 'Creates lasting impact in communities' },
+    { amount: 300000, label: 'Transformational Gift', description: 'Transforms multiple lives and communities' }
   ];
 
   const programs = [
@@ -109,22 +125,136 @@ const DonatePage = () => {
     }
   ];
 
-  const handleDonationSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle donation submission logic here
-    console.log('Donation submitted:', {
-      amount: selectedAmount || customAmount,
-      program: selectedProgram,
-      donorInfo
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const showError = (title: string, message: string) => {
+    setErrorDialog({
+      show: true,
+      title,
+      message
     });
   };
 
+  const closeErrorDialog = () => {
+    setErrorDialog({
+      show: false,
+      title: '',
+      message: ''
+    });
+  };
+
+  const closePaymentModal = () => {
+    setPaymentModal({
+      show: false,
+      checkoutUrl: '',
+      orderTrackingId: ''
+    });
+  };
+
+  const checkPaymentStatus = async (orderTrackingId: string) => {
+    try {
+      const response = await fetch('/api/pesapal/status', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ orderTrackingId })
+      });
+
+      const result = await response.json();
+      
+      if (response.ok) {
+        // Payment was successful, redirect to success page
+        if (result.status === 'COMPLETED' || result.status === 'SUCCESS') {
+          window.location.href = '/donation-success';
+        } else {
+          showError('Payment Status', `Payment status: ${result.status}`);
+        }
+      } else {
+        showError('Status Check Failed', result.error || 'Could not verify payment status');
+      }
+    } catch (error: any) {
+      console.error('Error checking payment status:', error);
+      showError('Status Check Error', 'Could not check payment status. Please contact support.');
+    }
+  };
+
+  const handleDonationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    const donationAmount = selectedAmount || parseInt(customAmount) || 0;
+    
+    if (donationAmount <= 0) {
+      showError('Invalid Amount', 'Please select or enter a valid donation amount');
+      return;
+    }
+
+    if (!donorInfo.name || !donorInfo.email) {
+      showError('Missing Information', 'Please fill in all required fields (Name and Email)');
+      return;
+    }
+
+    setIsProcessing(true);
+
+    try {
+      // Call our API to initiate payment
+      const response = await fetch('/api/pesapal/donate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: donationAmount,
+          email: donorInfo.email,
+          phone: donorInfo.phone,
+          name: donorInfo.name,
+          program: programs.find(p => p.id === selectedProgram)?.name || 'General Fund'
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.checkoutUrl) {
+        // Show payment modal with iframe instead of redirecting
+        setPaymentModal({
+          show: true,
+          checkoutUrl: result.checkoutUrl,
+          orderTrackingId: result.transactionId || ''
+        });
+      } else {
+        throw new Error(result.error || 'Payment initiation failed');
+      }
+      
+    } catch (error: any) {
+      console.error('Error processing donation:', error);
+      showError(
+        'Payment Failed', 
+        error.message || 'There was an error processing your donation. Please try again later.'
+      );
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 relative">
+      <Header />
+      
+
+      
       {/* Hero Section */}
-      <section className="relative h-[60vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="absolute inset-0 bg-[url('/images/IMG_0314.webp')] bg-cover bg-center opacity-30"></div>
+      <section className="relative h-[70vh] bg-gradient-to-r from-green-600 to-blue-600 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/IMG_0339.webp"
+            alt="Donation Background"
+            fill
+            className="object-cover"
+            priority
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-green-600/80 to-blue-600/80"></div>
+        <div className="absolute inset-0 bg-black/30"></div>
         
         <div className="relative z-10 flex items-center justify-center h-full">
           <motion.div 
@@ -239,98 +369,7 @@ const DonatePage = () => {
         </div>
       </section>
 
-      {/* Donation Options Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
-              Choose Your Impact
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Select an amount that fits your budget and see the direct impact of your donation
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
-          >
-            {donationAmounts.map((option, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer border-2 ${
-                  selectedAmount === option.amount 
-                    ? 'border-green-500 bg-green-50' 
-                    : 'border-gray-100 hover:border-green-300'
-                }`}
-                onClick={() => setSelectedAmount(option.amount)}
-                whileHover={{ 
-                  scale: 1.02,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="text-center">
-                  <div className="text-4xl font-bold text-gray-800 mb-2">
-                    ${option.amount}
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                    {option.label}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {option.description}
-                  </p>
-                  {selectedAmount === option.amount && (
-                    <div className="mt-4">
-                      <CheckCircle className="w-6 h-6 text-green-600 mx-auto" />
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Custom Amount */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-md mx-auto"
-          >
-            <div className="bg-white rounded-2xl p-8 shadow-lg border-2 border-gray-100">
-              <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
-                Custom Amount
-              </h3>
-              <div className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-gray-800">$</span>
-                <input
-                  type="number"
-                  value={customAmount}
-                  onChange={(e) => {
-                    setCustomAmount(e.target.value);
-                    setSelectedAmount(null);
-                  }}
-                  placeholder="Enter amount"
-                  className="flex-1 text-2xl font-bold text-gray-800 bg-transparent border-none outline-none"
-                />
-              </div>
-              <p className="text-gray-600 text-sm mt-2 text-center">
-                Every dollar makes a difference
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      
 
       {/* Program Selection Section */}
       <section className="py-20 px-4 bg-white">
@@ -397,45 +436,137 @@ const DonatePage = () => {
         </div>
       </section>
 
-      {/* Donation Form Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-green-50 to-blue-50">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
-              Complete Your Donation
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Your information is secure and will only be used to process your donation
-            </p>
-          </motion.div>
+             {/* Donation Form Section - Side by Side Layout */}
+       <section className="py-20 px-4 bg-gradient-to-br from-green-50 to-blue-50 relative">
+         <div className="max-w-7xl mx-auto">
+           <motion.div
+             initial={{ opacity: 0, y: 60 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: true }}
+             transition={{ duration: 0.8 }}
+             className="text-center mb-16"
+           >
+             <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 font-handwriting">
+               Complete Your Donation
+             </h2>
+             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+               Your information is secure and will only be used to process your donation
+             </p>
+           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Donation Form */}
-            <motion.div
-              initial={{ opacity: 0, x: -60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl p-8 shadow-xl"
-            >
+           <div className="grid lg:grid-cols-2 gap-12">
+             {/* Left Side - Donation Amount Selection */}
+             <motion.div
+               initial={{ opacity: 0, x: -30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8 }}
+               className="space-y-8"
+             >
+               <div className="bg-white rounded-2xl p-8 shadow-xl">
+                 <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+                   Choose Your Impact
+                 </h3>
+                 
+                 {/* Donation Amount Options */}
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                   {donationAmounts.map((option, index) => (
+                     <motion.div
+                       key={index}
+                       className={`bg-gradient-to-br from-green-50 to-blue-50 rounded-xl p-4 cursor-pointer border-2 transition-all duration-300 ${
+                         selectedAmount === option.amount 
+                           ? 'border-green-500 bg-green-50' 
+                           : 'border-gray-200 hover:border-green-300'
+                       }`}
+                       onClick={() => setSelectedAmount(option.amount)}
+                       whileHover={{ scale: 1.02 }}
+                     >
+                       <div className="text-center">
+                         <div className="text-xl font-bold text-gray-800 mb-1">
+                           UGX {option.amount.toLocaleString()}
+                         </div>
+                         <h4 className="text-sm font-semibold text-gray-800 mb-1">
+                           {option.label}
+                         </h4>
+                         <p className="text-xs text-gray-600">
+                           {option.description}
+                         </p>
+                         {selectedAmount === option.amount && (
+                           <div className="mt-2">
+                             <CheckCircle className="w-4 h-4 text-green-600 mx-auto" />
+                           </div>
+                         )}
+                       </div>
+                     </motion.div>
+                   ))}
+                 </div>
+
+                 {/* Custom Amount */}
+                 <div className="bg-gradient-to-br from-white to-green-50 rounded-2xl p-6 border border-green-200">
+                   <h4 className="text-lg font-bold text-gray-800 mb-4 text-center">
+                     💰 Custom Amount
+                   </h4>
+                   <div className="relative">
+                     <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-lg font-bold text-green-600">
+                       UGX
+                     </div>
+                     <input
+                       type="number"
+                       value={customAmount}
+                       onChange={(e) => {
+                         const value = e.target.value;
+                         if (value === '' || parseInt(value) >= 0) {
+                           setCustomAmount(value);
+                           setSelectedAmount(null);
+                         }
+                       }}
+                       placeholder="Enter amount"
+                       className="w-full pl-16 pr-12 py-3 text-xl font-bold text-gray-800 bg-white border-2 border-green-300 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all duration-300"
+                     />
+                     <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                       <Gift className="w-6 h-6 text-green-500" />
+                     </div>
+                   </div>
+                   <div className="mt-3 text-center">
+                     <p className="text-green-600 font-semibold text-sm">
+                       No limit on generosity
+                     </p>
+                   </div>
+                   {customAmount && parseInt(customAmount) > 0 && (
+                     <motion.div
+                       initial={{ opacity: 0, scale: 0.8 }}
+                       animate={{ opacity: 1, scale: 1 }}
+                       className="mt-3 bg-green-100 rounded-lg p-3 text-center"
+                     >
+                       <p className="text-green-800 font-semibold text-sm">
+                         UGX {parseInt(customAmount).toLocaleString()} will make a meaningful impact
+                       </p>
+                     </motion.div>
+                   )}
+                 </div>
+               </div>
+             </motion.div>
+
+             {/* Right Side - Donation Form */}
+             <motion.div
+               initial={{ opacity: 0, x: 30 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               viewport={{ once: true }}
+               transition={{ duration: 0.8 }}
+               className="bg-white rounded-2xl p-8 shadow-xl"
+             >
               <form onSubmit={handleDonationSubmit} className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Donation Amount
                   </label>
                   <div className="text-2xl font-bold text-green-600">
-                    ${selectedAmount || customAmount || '0'}
+                    UGX {(selectedAmount || parseInt(customAmount) || 0).toLocaleString()}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Program
                   </label>
                   <div className="text-lg text-gray-800">
@@ -444,7 +575,7 @@ const DonatePage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Full Name *
                   </label>
                   <input
@@ -452,13 +583,13 @@ const DonatePage = () => {
                     required
                     value={donorInfo.name}
                     onChange={(e) => setDonorInfo({...donorInfo, name: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                     placeholder="Enter your full name"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Email Address *
                   </label>
                   <input
@@ -466,26 +597,26 @@ const DonatePage = () => {
                     required
                     value={donorInfo.email}
                     onChange={(e) => setDonorInfo({...donorInfo, email: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                     placeholder="Enter your email"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  <label className="block text-sm font-semibold text-black mb-2">
                     Phone Number
                   </label>
                   <input
                     type="tel"
                     value={donorInfo.phone}
                     onChange={(e) => setDonorInfo({...donorInfo, phone: e.target.value})}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 bg-gray-50 focus:bg-white shadow-sm text-black placeholder-gray-500"
                     placeholder="Enter your phone number"
                   />
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <input
+                  {/* <input
                     type="checkbox"
                     id="anonymous"
                     checked={donorInfo.anonymous}
@@ -494,91 +625,49 @@ const DonatePage = () => {
                   />
                   <label htmlFor="anonymous" className="text-sm text-gray-700">
                     Make this donation anonymous
-                  </label>
+                  </label> */}
                 </div>
 
                 <motion.button
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-lg font-semibold transition-colors duration-300 flex items-center justify-center space-x-2"
+                  disabled={(!selectedAmount && !customAmount) || !donorInfo.name || !donorInfo.email || isProcessing}
+                  className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 disabled:from-gray-400 disabled:to-gray-500 text-white py-4 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl disabled:cursor-not-allowed"
                 >
+                  {isProcessing ? (
+                    <>
+                      <motion.div
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                      />
+                      <span>Processing...</span>
+                    </>
+                  ) : (
+                    <>
                   <CreditCard className="w-5 h-5" />
-                  <span>Complete Donation</span>
+                      <span>Pay with Pesapal</span>
+                      <ArrowRight className="w-5 h-5" />
+                    </>
+                  )}
                 </motion.button>
-              </form>
-            </motion.div>
-
-            {/* Security & Trust */}
-            <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
-            >
-              <div className="bg-white rounded-2xl p-8 shadow-xl">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <Shield className="w-6 h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800">Secure & Trusted</h3>
-                </div>
-                <ul className="space-y-3 text-gray-600">
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span>SSL encrypted transactions</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span>PCI DSS compliant</span>
-                  </li>
-                  <li className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-green-600" />
-                    <span>Your data is protected</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-xl">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Gift className="w-6 h-6 text-blue-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800">Tax Deductible</h3>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Your donation is tax-deductible. You'll receive a receipt for your records.
-                </p>
-                <div className="bg-gray-50 rounded-lg p-4">
+                
+                <div className="mt-4 text-center">
                   <p className="text-sm text-gray-600">
-                    <strong>Organization:</strong> Huruma Global Support Initiative Limited<br/>
-                    <strong>Address:</strong> Makonzi zone Sserwadda Close Bukoto<br/>
-                    <strong>Phone:</strong> +256 748 020 214
+                    🔒 Secure payment powered by <span className="font-semibold text-blue-600">Pesapal</span>
                   </p>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 shadow-xl">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Heart className="w-6 h-6 text-purple-600" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-800">Alternative Ways to Give</h3>
-                </div>
-                <div className="space-y-4">
-                  <div className="bg-green-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Airtel Money</h4>
-                    <p className="text-lg font-bold text-green-600">4392361</p>
-                    <p className="text-sm text-gray-600">Send to: Huruma Global Support Initiative</p>
-                  </div>
-                  <div className="bg-blue-50 rounded-lg p-4">
-                    <h4 className="font-semibold text-gray-800 mb-2">Bank Transfer</h4>
-                    <p className="text-lg font-bold text-blue-600">DFCU Bank: 01490016746558</p>
-                    <p className="text-sm text-gray-600">Send to: Huruma Global Support Initiative</p>
+                  <div className="flex justify-center items-center space-x-4 mt-2">
+                    {/* <span className="text-xs text-gray-500">Accepts:</span>
+                    <div className="flex space-x-2">
+                      <div className="w-8 h-5 bg-blue-600 rounded text-white text-xs flex items-center justify-center font-bold">VISA</div>
+                      <div className="w-8 h-5 bg-red-600 rounded text-white text-xs flex items-center justify-center font-bold">MC</div>
+                      <div className="w-8 h-5 bg-green-600 rounded text-white text-xs flex items-center justify-center font-bold">MTN</div>
+                      <div className="w-8 h-5 bg-yellow-600 rounded text-white text-xs flex items-center justify-center font-bold">AIR</div>
+                  </div> */}
                   </div>
                 </div>
-              </div>
+              </form>
             </motion.div>
           </div>
         </div>
@@ -681,6 +770,7 @@ const DonatePage = () => {
               </div>
             </div>
 
+            <Link href="/contact">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -689,9 +779,242 @@ const DonatePage = () => {
               Contact Us
               <ArrowRight className="w-5 h-5 ml-2" />
             </motion.button>
+            </Link>
           </motion.div>
         </div>
       </section>
+
+      {/* Payment Modal */}
+      {paymentModal.show && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="bg-white rounded-2xl w-full max-w-4xl h-[80vh] shadow-2xl overflow-hidden"
+          >
+            {/* Modal Header */}
+            <div className="bg-gradient-to-r from-green-600 to-blue-600 px-6 py-4 flex items-center justify-between">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+                  <Shield className="w-4 h-4 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white">Secure Payment</h3>
+                  <p className="text-green-100 text-sm">Powered by Pesapal</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-2">
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => {
+                    if (paymentModal.orderTrackingId) {
+                      checkPaymentStatus(paymentModal.orderTrackingId);
+                    }
+                  }}
+                  className="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-200 flex items-center space-x-2"
+                >
+                  <CheckCircle className="w-4 h-4" />
+                  <span>Check Status</span>
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={closePaymentModal}
+                  className="w-8 h-8 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
+                >
+                  <X className="w-4 h-4 text-white" />
+                </motion.button>
+              </div>
+            </div>
+
+            {/* Loading State */}
+            <div className="relative h-full">
+              <motion.div
+                initial={{ opacity: 1 }}
+                animate={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: 2 }}
+                className="absolute inset-0 bg-gray-50 flex items-center justify-center z-10"
+              >
+                <div className="text-center">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-12 h-12 border-4 border-green-200 border-t-green-600 rounded-full mx-auto mb-4"
+                  />
+                  <p className="text-gray-600 font-semibold">Loading secure payment...</p>
+                </div>
+              </motion.div>
+
+              {/* Iframe Container */}
+              <div className="h-full p-4">
+                <iframe
+                  src={paymentModal.checkoutUrl}
+                  className="w-full h-full border-0 rounded-lg"
+                  title="Pesapal Payment Checkout"
+                  allow="payment; microphone; camera"
+                  sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups"
+                  onLoad={() => {
+                    // Optional: Handle iframe load event
+                    console.log('Payment iframe loaded');
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="bg-gray-50 px-6 py-4 border-t">
+              <div className="flex flex-col sm:flex-row items-center justify-between space-y-3 sm:space-y-0">
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <Shield className="w-4 h-4 text-green-600" />
+                  <span>Your payment is protected by 256-bit SSL encryption</span>
+                </div>
+                
+                <div className="flex items-center space-x-3">
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={closePaymentModal}
+                    className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg font-semibold transition-colors duration-200"
+                  >
+                    Cancel Payment
+                  </motion.button>
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => {
+                      if (paymentModal.orderTrackingId) {
+                        checkPaymentStatus(paymentModal.orderTrackingId);
+                      }
+                    }}
+                    className="px-4 py-2 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white rounded-lg font-semibold transition-all duration-200 flex items-center space-x-2"
+                  >
+                    <CheckCircle className="w-4 h-4" />
+                    <span>Verify Payment</span>
+                  </motion.button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Error Dialog */}
+      {errorDialog.show && (
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl"
+          >
+            {/* Animated X Icon */}
+            <div className="flex justify-center mb-6">
+              <motion.div
+                initial={{ scale: 0, rotate: -180 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.2,
+                  ease: "easeOut"
+                }}
+                className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center"
+              >
+                <motion.div
+                  animate={{ 
+                    rotate: [0, 5, -5, 0],
+                    scale: [1, 1.1, 1]
+                  }}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <X className="w-8 h-8 text-red-600" />
+                </motion.div>
+              </motion.div>
+            </div>
+
+            {/* Error Content */}
+            <div className="text-center">
+              <motion.h3
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+                className="text-2xl font-bold text-gray-800 mb-4"
+              >
+                {errorDialog.title}
+              </motion.h3>
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="text-gray-600 leading-relaxed mb-6"
+              >
+                {errorDialog.message}
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.5 }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={closeErrorDialog}
+                  className="flex-1 bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-700 hover:to-gray-800 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center"
+                >
+                  Try Again
+                </motion.button>
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => {
+                    closeErrorDialog();
+                    // Optionally scroll to contact section or show contact info
+                  }}
+                  className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center"
+                >
+                  Get Help
+                </motion.button>
+              </motion.div>
+
+              {/* Additional Help Text */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
+                className="text-sm text-gray-500 mt-4"
+              >
+                If the problem persists, please contact our support team
+              </motion.p>
+            </div>
+
+            {/* Close Button */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.3 }}
+              onClick={closeErrorDialog}
+              className="absolute top-4 right-4 w-8 h-8 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center transition-colors duration-200"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <X className="w-4 h-4 text-gray-600" />
+            </motion.button>
+          </motion.div>
+        </div>
+      )}
 
       {/* Footer */}
       <Footer />

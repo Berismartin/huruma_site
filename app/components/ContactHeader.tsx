@@ -77,14 +77,15 @@ const ContactHeader = () => {
                 {item.name}
               </Link>
             ))}
-            
+            <Link href="/donate">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-semibold transition-colors duration-300"
             >
-              Donate Now
+              Donate
             </motion.button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}

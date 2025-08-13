@@ -70,7 +70,7 @@ export default function SustainableLivelihoodsPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/IMG_0316.webp"
+                  src="/images2/IMG_0898.jpg"
                   alt="Community members working together"
                   fill
                   className="object-cover"

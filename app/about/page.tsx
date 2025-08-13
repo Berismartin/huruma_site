@@ -246,7 +246,7 @@ const AboutPage = () => {
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/images/P7_STUDENTS.png"
+                      src="/images2/IMG_1175.jpg"
                       alt="P7 Students"
                       width={200}
                       height={150}
@@ -255,7 +255,7 @@ const AboutPage = () => {
                   </div>
                   <div className="rounded-xl overflow-hidden shadow-lg">
                     <Image
-                      src="/images/IMG_0314.webp"
+                      src="/images/MAGNET (1).jpg"
                       alt="Community Impact"
                       width={200}
                       height={150}

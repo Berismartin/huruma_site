@@ -17,7 +17,7 @@ export default function PLEEmpowermentPage() {
     staggerChildren(0.1, 0.3);
   }, [fadeInUp, staggerChildren]);
 
-  return (
+  return ( 
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       <Header />
       
@@ -71,7 +71,7 @@ export default function PLEEmpowermentPage() {
               </div>
               <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/P7_STUDENTS.png"
+                  src="/images/pens4.jpg"
                   alt="PLE Students receiving materials"
                   fill
                   className="object-cover"
