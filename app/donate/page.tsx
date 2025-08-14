@@ -38,6 +38,9 @@ const DonatePage = () => {
     anonymous: false
   });
 
+  // Ref for the donation form section
+  const donationFormRef = React.useRef<HTMLDivElement>(null);
+
   const [errorDialog, setErrorDialog] = useState({
     show: false,
     title: '',
@@ -120,7 +123,7 @@ const DonatePage = () => {
     {
       title: "Business Training Success",
       description: "Maria started a small business after receiving training and seed funding. She now supports her family.",
-      image: "/images/image 5.webp",
+      image: "/images2/IMG_0898.jpg",
       impact: "Your donation empowers families economically"
     }
   ];
@@ -149,6 +152,40 @@ const DonatePage = () => {
       checkoutUrl: '',
       orderTrackingId: ''
     });
+  };
+
+  // Function to scroll to donation form
+  const scrollToDonationForm = () => {
+    if (donationFormRef.current) {
+      donationFormRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Function to handle donation amount selection
+  const handleAmountSelection = (amount: number) => {
+    setSelectedAmount(amount);
+    setCustomAmount(''); // Clear custom amount when preset is selected
+    // Scroll to form after a short delay to ensure state is updated
+    setTimeout(() => {
+      scrollToDonationForm();
+    }, 100);
+  };
+
+  // Function to handle custom amount input
+  const handleCustomAmountChange = (value: string) => {
+    if (value === '' || parseInt(value) >= 0) {
+      setCustomAmount(value);
+      setSelectedAmount(null);
+      // Scroll to form if amount is valid
+      if (parseInt(value) > 0) {
+        setTimeout(() => {
+          scrollToDonationForm();
+        }, 300);
+      }
+    }
   };
 
   const checkPaymentStatus = async (orderTrackingId: string) => {
@@ -478,7 +515,7 @@ const DonatePage = () => {
                            ? 'border-green-500 bg-green-50' 
                            : 'border-gray-200 hover:border-green-300'
                        }`}
-                       onClick={() => setSelectedAmount(option.amount)}
+                       onClick={() => handleAmountSelection(option.amount)}
                        whileHover={{ scale: 1.02 }}
                      >
                        <div className="text-center">
@@ -513,13 +550,7 @@ const DonatePage = () => {
                      <input
                        type="number"
                        value={customAmount}
-                       onChange={(e) => {
-                         const value = e.target.value;
-                         if (value === '' || parseInt(value) >= 0) {
-                           setCustomAmount(value);
-                           setSelectedAmount(null);
-                         }
-                       }}
+                       onChange={(e) => handleCustomAmountChange(e.target.value)}
                        placeholder="Enter amount"
                        className="w-full pl-16 pr-12 py-3 text-xl font-bold text-gray-800 bg-white border-2 border-green-300 rounded-xl focus:border-green-500 focus:ring-2 focus:ring-green-200 outline-none transition-all duration-300"
                      />
@@ -549,6 +580,7 @@ const DonatePage = () => {
 
              {/* Right Side - Donation Form */}
              <motion.div
+               ref={donationFormRef}
                initial={{ opacity: 0, x: 30 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
