@@ -259,10 +259,7 @@ const ComponentsDemoPage = () => {
       </section>
 
       {/* Section Components Demo */}
-      <MissionVisionSection
-        mission={mission}
-        vision={vision}
-      />
+      <MissionVisionSection />
 
       <HistorySection
         title="Our Story"
