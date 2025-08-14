@@ -43,15 +43,16 @@ const getTransactionStatus = async (orderTrackingId: string, accessToken: string
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { transactionId: string } }
+  { params }: { params: Promise<{ transactionId: string }> }
 ) {
   try {
     const { searchParams } = new URL(request.url);
     const orderTrackingId = searchParams.get('OrderTrackingId');
     const orderMerchantReference = searchParams.get('OrderMerchantReference');
+    const resolvedParams = await params;
 
     console.log("📧 IPN Notification received:", {
-      transactionId: params.transactionId,
+      transactionId: resolvedParams.transactionId,
       orderTrackingId,
       orderMerchantReference
     });
@@ -74,19 +75,19 @@ export async function GET(
     const paymentStatus = statusResponse.payment_status_description || statusResponse.status_description;
     
     if (paymentStatus === 'Completed' || paymentStatus === 'COMPLETED') {
-      console.log("✅ Payment completed successfully for transaction:", params.transactionId);
+      console.log("✅ Payment completed successfully for transaction:", resolvedParams.transactionId);
       
       // TODO: Save successful payment to database
       // TODO: Send confirmation email to donor
       // TODO: Update donation records
       
     } else if (paymentStatus === 'Failed' || paymentStatus === 'FAILED') {
-      console.log("❌ Payment failed for transaction:", params.transactionId);
+      console.log("❌ Payment failed for transaction:", resolvedParams.transactionId);
       
       // TODO: Handle failed payment
       
     } else {
-      console.log("⏳ Payment pending for transaction:", params.transactionId);
+      console.log("⏳ Payment pending for transaction:", resolvedParams.transactionId);
       
       // TODO: Handle pending payment
     }
@@ -110,7 +111,7 @@ export async function GET(
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { transactionId: string } }
+  { params }: { params: Promise<{ transactionId: string }> }
 ) {
   // Handle POST requests the same way as GET for IPN
   return GET(request, { params });
