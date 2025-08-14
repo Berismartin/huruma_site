@@ -128,11 +128,7 @@ const ComponentsDemoPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       {/* Hero Section Demo */}
-      <HeroSection
-        title="Components Demo"
-        subtitle="Showcasing all the reusable components for the Huruma website"
-        backgroundImage="/images/IMG_0314.webp"
-      />
+      <HeroSection />
 
       {/* UI Components Demo */}
       <section className="py-20 px-4">
