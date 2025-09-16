@@ -129,6 +129,7 @@ const DonatePage = () => {
   ];
 
   const [isProcessing, setIsProcessing] = useState(false);
+  const [iframeLoaded, setIframeLoaded] = useState(false);
 
   const showError = (title: string, message: string) => {
     setErrorDialog({
@@ -152,6 +153,7 @@ const DonatePage = () => {
       checkoutUrl: '',
       orderTrackingId: ''
     });
+    setIframeLoaded(false);
   };
 
   // Function to scroll to donation form
@@ -253,6 +255,7 @@ const DonatePage = () => {
 
       if (response.ok && result.checkoutUrl) {
         // Show payment modal with iframe instead of redirecting
+        setIframeLoaded(false);
         setPaymentModal({
           show: true,
           checkoutUrl: result.checkoutUrl,
@@ -868,9 +871,9 @@ const DonatePage = () => {
             <div className="relative h-full">
               <motion.div
                 initial={{ opacity: 1 }}
-                animate={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 2 }}
-                className="absolute inset-0 bg-gray-50 flex items-center justify-center z-10"
+                animate={{ opacity: iframeLoaded ? 0 : 1 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0 bg-gray-50 flex items-center justify-center z-10 pointer-events-none"
               >
                 <div className="text-center">
                   <motion.div
@@ -891,8 +894,7 @@ const DonatePage = () => {
                   allow="payment; microphone; camera"
                   sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups"
                   onLoad={() => {
-                    // Optional: Handle iframe load event
-                    console.log('Payment iframe loaded');
+                    setIframeLoaded(true);
                   }}
                 />
               </div>
