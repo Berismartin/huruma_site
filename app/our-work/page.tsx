@@ -185,7 +185,7 @@ const OurWorkPage = () => {
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              Our Work
+              Our Initiatives
             </motion.h1>
             <motion.p 
               className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed"

@@ -540,6 +540,7 @@ const TeamPage = () => {
                 <Phone className="w-8 h-8 text-white mx-auto mb-4" />
                 <h3 className="text-white font-semibold mb-2">Phone</h3>
                 <p className="text-green-100">+256 748 020 214</p>
+                <p className="text-green-100">+256 791 183 979</p>
               </div>
               <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
                 <Mail className="w-8 h-8 text-white mx-auto mb-4" />

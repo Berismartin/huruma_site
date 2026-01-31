@@ -122,7 +122,7 @@ const ContactPage = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "info@hurumaglobalsupportinit\niative.org",
+      value: "info@hurumaglobalsupportinitiative.org",
       description: "We'll respond within 24 hours",
       color: "from-blue-500 to-blue-600"
     },
