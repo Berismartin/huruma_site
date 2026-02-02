@@ -1,18 +1,126 @@
 'use client';
 
-export default function HomePage() {
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Header from './components/Header';
+import HeroCarousel from './components/HeroCarousel';
+import StatsSection from './components/StatsSection';
+import AboutSection from './components/AboutSection';
+import WhatWeDoSection from './components/WhatWeDoSection';
+import SuccessStorySection from './components/SuccessStorySection';
+import ImpactStoriesSection from './components/ImpactStoriesSection';
+import CoreValuesSection from './components/CoreValuesSection';
+import TextOverlaySection from './components/TextOverlaySection';
+import Footer from './components/Footer';
+import LoadingScreen from './components/LoadingScreen';
+
+export default function Home() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
+
+  const handleLoadingComplete = () => {
+    setShowContent(true);
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-gray-800">
-      <div className="bg-gray-900 shadow-xl rounded-2xl p-10 text-center border border-gray-800">
-        <h1 className="text-3xl font-bold mb-4 text-white">No Deployment Yet</h1>
-        <p className="text-gray-300 mb-4">Please contact support if you need assistance.</p>
-        <a
-          href="mailto:berismartin25@gmail.com"
-          className="inline-block mt-2 px-6 py-2 bg-black text-white rounded-md border border-gray-600 hover:bg-gray-800 hover:border-gray-400 transition"
-        >
-          Contact Support
-        </a>
-      </div>
-    </div>
+    <>
+      <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+      
+      <AnimatePresence>
+        {showContent && (
+          <motion.main
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ 
+              duration: 0.5, 
+              ease: "easeOut"
+            }}
+            className="min-h-screen"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+            >
+              <Header />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+            >
+              <HeroCarousel />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
+              <StatsSection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <AboutSection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              <WhatWeDoSection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              <SuccessStorySection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <ImpactStoriesSection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              {/* <CoreValuesSection /> */}
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9, duration: 0.6 }}
+            >
+              <TextOverlaySection />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 0.6 }}
+            >
+              <Footer />
+            </motion.div>
+              
+          </motion.main>
+        )}
+      </AnimatePresence>
+    </>
   );
 }
+
